@@ -1,0 +1,1033 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Blue AI Crew 営業アタック戦略書</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@300;400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --primary: #1a56db;
+    --primary-light: #e8eefb;
+    --primary-dark: #0f3a91;
+    --accent: #2563eb;
+    --bg: #f8fafd;
+    --card-bg: #ffffff;
+    --text: #1e293b;
+    --text-light: #64748b;
+    --border: #e2e8f0;
+    --success: #059669;
+    --warning: #d97706;
+    --danger: #dc2626;
+    --grade-a: #059669;
+    --grade-b: #2563eb;
+    --grade-c: #64748b;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'Noto Sans JP', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.8;
+    font-size: 15px;
+  }
+
+  /* ヘッダー */
+  .hero {
+    background: linear-gradient(135deg, var(--primary) 0%, #3b82f6 50%, #60a5fa 100%);
+    color: #fff;
+    padding: 60px 40px 50px;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -20%;
+    width: 600px;
+    height: 600px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.05);
+  }
+  .hero::after {
+    content: '';
+    position: absolute;
+    bottom: -30%;
+    left: -10%;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.04);
+  }
+  .hero-inner {
+    max-width: 960px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+  .hero-label {
+    display: inline-block;
+    background: rgba(255,255,255,0.2);
+    padding: 4px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+    margin-bottom: 16px;
+  }
+  .hero h1 {
+    font-size: 32px;
+    font-weight: 900;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+  }
+  .hero p {
+    font-size: 15px;
+    opacity: 0.9;
+    font-weight: 300;
+  }
+  .hero-meta {
+    margin-top: 24px;
+    display: flex;
+    gap: 24px;
+    font-size: 13px;
+    opacity: 0.8;
+  }
+
+  /* コンテナ */
+  .container {
+    max-width: 960px;
+    margin: 0 auto;
+    padding: 0 24px;
+  }
+
+  /* 目次 */
+  .toc {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 32px;
+    margin: -30px 24px 40px;
+    position: relative;
+    z-index: 2;
+    max-width: 960px;
+    margin-left: auto;
+    margin-right: auto;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.06);
+  }
+  .toc h2 {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 16px;
+  }
+  .toc-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px 32px;
+  }
+  .toc a {
+    display: block;
+    color: var(--text);
+    text-decoration: none;
+    padding: 6px 0;
+    font-size: 14px;
+    font-weight: 400;
+    border-bottom: 1px solid transparent;
+    transition: all 0.2s;
+  }
+  .toc a:hover {
+    color: var(--primary);
+    border-bottom-color: var(--primary-light);
+  }
+  .toc a .num {
+    display: inline-block;
+    width: 24px;
+    height: 24px;
+    line-height: 24px;
+    text-align: center;
+    background: var(--primary-light);
+    color: var(--primary);
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 700;
+    margin-right: 8px;
+  }
+
+  /* セクション */
+  section {
+    margin-bottom: 48px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-bottom: 24px;
+    padding-bottom: 12px;
+    border-bottom: 2px solid var(--primary);
+  }
+  .section-num {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    background: var(--primary);
+    color: #fff;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 900;
+    flex-shrink: 0;
+  }
+  .section-header h2 {
+    font-size: 22px;
+    font-weight: 700;
+    color: var(--text);
+  }
+
+  /* カード */
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 24px;
+    margin-bottom: 16px;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.03);
+  }
+  .card h3 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 12px;
+  }
+
+  /* ソリューショングリッド */
+  .solution-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+    margin-top: 16px;
+  }
+  .solution-item {
+    background: var(--primary-light);
+    border-radius: 8px;
+    padding: 16px;
+    text-align: center;
+  }
+  .solution-item .icon {
+    font-size: 28px;
+    margin-bottom: 6px;
+  }
+  .solution-item .name {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary-dark);
+  }
+  .solution-item .desc {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* テーブル */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px;
+  }
+  thead th {
+    background: var(--primary);
+    color: #fff;
+    padding: 10px 12px;
+    text-align: left;
+    font-weight: 500;
+    font-size: 13px;
+  }
+  thead th:first-child { border-radius: 8px 0 0 0; }
+  thead th:last-child { border-radius: 0 8px 0 0; }
+  tbody td {
+    padding: 10px 12px;
+    border-bottom: 1px solid var(--border);
+  }
+  tbody tr:hover { background: var(--primary-light); }
+
+  /* DXスコア */
+  .dx-score {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .dx-dot {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background: var(--border);
+  }
+  .dx-dot.filled { background: var(--primary); }
+  .dx-dot.filled.low { background: var(--danger); }
+
+  /* 優先度バッジ */
+  .badge {
+    display: inline-block;
+    padding: 2px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+  }
+  .badge-a { background: #d1fae5; color: var(--grade-a); }
+  .badge-b { background: #dbeafe; color: var(--grade-b); }
+  .badge-c { background: #f1f5f9; color: var(--grade-c); }
+
+  /* パイプラインフロー */
+  .pipeline {
+    display: flex;
+    gap: 0;
+    margin: 20px 0;
+    overflow-x: auto;
+  }
+  .pipeline-step {
+    flex: 1;
+    min-width: 140px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    padding: 16px 12px;
+    text-align: center;
+    position: relative;
+  }
+  .pipeline-step:first-child { border-radius: 8px 0 0 8px; }
+  .pipeline-step:last-child { border-radius: 0 8px 8px 0; }
+  .pipeline-step:not(:last-child)::after {
+    content: '';
+    position: absolute;
+    right: -10px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 0;
+    height: 0;
+    border-top: 12px solid transparent;
+    border-bottom: 12px solid transparent;
+    border-left: 10px solid var(--primary);
+    z-index: 1;
+  }
+  .pipeline-step .step-label {
+    font-size: 11px;
+    color: var(--text-light);
+    font-weight: 500;
+  }
+  .pipeline-step .step-title {
+    font-size: 14px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-top: 4px;
+  }
+  .pipeline-step .step-detail {
+    font-size: 11px;
+    color: var(--text-light);
+    margin-top: 4px;
+  }
+
+  /* タイムライン */
+  .timeline {
+    position: relative;
+    padding-left: 28px;
+  }
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 8px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: var(--primary-light);
+  }
+  .timeline-item {
+    position: relative;
+    margin-bottom: 24px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+  }
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -24px;
+    top: 20px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--primary);
+    border: 2px solid #fff;
+    box-shadow: 0 0 0 2px var(--primary-light);
+  }
+  .timeline-item .week {
+    font-size: 13px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 4px;
+  }
+  .timeline-item .actions {
+    font-size: 14px;
+    color: var(--text);
+  }
+
+  /* 実績カード */
+  .weapon-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .weapon-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+    border-left: 4px solid var(--primary);
+  }
+  .weapon-card .label {
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-light);
+    margin-bottom: 4px;
+  }
+  .weapon-card .title {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 8px;
+  }
+  .weapon-card .detail {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+
+  /* チェックリスト */
+  .checklist {
+    list-style: none;
+    padding: 0;
+  }
+  .checklist li {
+    padding: 8px 0;
+    padding-left: 28px;
+    position: relative;
+    font-size: 14px;
+    border-bottom: 1px solid var(--border);
+  }
+  .checklist li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 12px;
+    width: 16px;
+    height: 16px;
+    border: 2px solid var(--primary);
+    border-radius: 4px;
+    background: #fff;
+  }
+
+  /* リンクセクション */
+  .link-card {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 8px;
+    text-decoration: none;
+    color: var(--text);
+    transition: all 0.2s;
+  }
+  .link-card:hover {
+    border-color: var(--primary);
+    box-shadow: 0 2px 12px rgba(26,86,219,0.1);
+  }
+  .link-icon {
+    width: 40px;
+    height: 40px;
+    background: var(--primary-light);
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    flex-shrink: 0;
+  }
+  .link-card .link-title {
+    font-weight: 700;
+    font-size: 14px;
+  }
+  .link-card .link-url {
+    font-size: 12px;
+    color: var(--text-light);
+    word-break: break-all;
+  }
+
+  /* DXスコア説明 */
+  .dx-criteria {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    margin-top: 12px;
+  }
+  .dx-criteria-item {
+    background: var(--primary-light);
+    border-radius: 8px;
+    padding: 12px 16px;
+    font-size: 13px;
+  }
+  .dx-criteria-item strong {
+    color: var(--primary-dark);
+  }
+
+  /* ハイライト */
+  .highlight-box {
+    background: linear-gradient(135deg, var(--primary-light), #dbeafe);
+    border-radius: 10px;
+    padding: 20px 24px;
+    margin: 16px 0;
+    border-left: 4px solid var(--primary);
+  }
+  .highlight-box p {
+    font-size: 15px;
+    font-weight: 500;
+    color: var(--primary-dark);
+  }
+
+  /* 産廃リスト */
+  .company-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .company-tag {
+    display: inline-block;
+    padding: 4px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    font-weight: 500;
+    background: #f1f5f9;
+    color: var(--text);
+  }
+  .company-tag.priority-a {
+    background: #d1fae5;
+    color: var(--grade-a);
+    font-weight: 700;
+  }
+  .company-tag.priority-b {
+    background: #dbeafe;
+    color: var(--grade-b);
+  }
+
+  /* 手法カード */
+  .approach-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+  }
+  .approach-card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 20px;
+  }
+  .approach-card h4 {
+    font-size: 15px;
+    font-weight: 700;
+    color: var(--primary-dark);
+    margin-bottom: 8px;
+  }
+  .approach-card p {
+    font-size: 13px;
+    color: var(--text-light);
+    line-height: 1.7;
+  }
+
+  /* フッター */
+  footer {
+    background: var(--primary-dark);
+    color: rgba(255,255,255,0.7);
+    text-align: center;
+    padding: 24px;
+    font-size: 13px;
+    margin-top: 60px;
+  }
+  footer strong {
+    color: #fff;
+  }
+
+  @media (max-width: 768px) {
+    .hero { padding: 40px 20px 36px; }
+    .hero h1 { font-size: 24px; }
+    .toc-grid { grid-template-columns: 1fr; }
+    .solution-grid { grid-template-columns: 1fr 1fr; }
+    .weapon-grid { grid-template-columns: 1fr; }
+    .approach-grid { grid-template-columns: 1fr; }
+    .dx-criteria { grid-template-columns: 1fr; }
+    .pipeline { flex-direction: column; }
+    .pipeline-step:not(:last-child)::after { display: none; }
+    .pipeline-step { border-radius: 8px !important; margin-bottom: 8px; }
+    .hero-meta { flex-direction: column; gap: 4px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ヘッダー -->
+<div class="hero">
+  <div class="hero-inner">
+    <span class="hero-label">INTERNAL DOCUMENT</span>
+    <h1>Blue AI Crew<br>営業アタック戦略書</h1>
+    <p>ソリューション横展開による新規顧客開拓の実行計画</p>
+    <div class="hero-meta">
+      <span>合同会社青橋</span>
+      <span>作成日: 2026年4月4日</span>
+      <span>社内共有用</span>
+    </div>
+  </div>
+</div>
+
+<!-- 目次 -->
+<div class="container">
+<div class="toc">
+  <h2>Contents</h2>
+  <div class="toc-grid">
+    <a href="#sec1"><span class="num">1</span>概要 - ソリューション一覧</a>
+    <a href="#sec5"><span class="num">5</span>アタック手法</a>
+    <a href="#sec2"><span class="num">2</span>ターゲット選定基準</a>
+    <a href="#sec6"><span class="num">6</span>スケジュール（4月〜5月）</a>
+    <a href="#sec3"><span class="num">3</span>自動営業パイプライン</a>
+    <a href="#sec7"><span class="num">7</span>武器（実績）</a>
+    <a href="#sec4"><span class="num">4</span>営業先リスト</a>
+    <a href="#sec8"><span class="num">8</span>関連リンク</a>
+  </div>
+</div>
+</div>
+
+<div class="container">
+
+<!-- 1. 概要 -->
+<section id="sec1">
+  <div class="section-header">
+    <div class="section-num">1</div>
+    <h2>概要 - ソリューション一覧</h2>
+  </div>
+  <p>Blue AI Crewが保有する6つのソリューションを、業界特性に合わせて組み合わせ、横展開していく。</p>
+  <div class="solution-grid">
+    <div class="solution-item">
+      <div class="icon">&#128666;</div>
+      <div class="name">配車最適化AI</div>
+      <div class="desc">産廃・物流の配車を自動最適化</div>
+    </div>
+    <div class="solution-item">
+      <div class="icon">&#128444;</div>
+      <div class="name">画像監修AI</div>
+      <div class="desc">出版物の画像チェックを効率化</div>
+    </div>
+    <div class="solution-item">
+      <div class="icon">&#128197;</div>
+      <div class="name">シフト管理AI</div>
+      <div class="desc">警備・介護の勤務シフトを自動生成</div>
+    </div>
+    <div class="solution-item">
+      <div class="icon">&#128200;</div>
+      <div class="name">経理自動化</div>
+      <div class="desc">仕分け・請求書・月次処理を自動化</div>
+    </div>
+    <div class="solution-item">
+      <div class="icon">&#128218;</div>
+      <div class="name">ナレッジ管理</div>
+      <div class="desc">社内情報を検索・活用可能に</div>
+    </div>
+    <div class="solution-item">
+      <div class="icon">&#9881;</div>
+      <div class="name">BPR（業務改革）</div>
+      <div class="desc">業務プロセス全体を再設計</div>
+    </div>
+  </div>
+</section>
+
+<!-- 2. ターゲット選定基準 -->
+<section id="sec2">
+  <div class="section-header">
+    <div class="section-num">2</div>
+    <h2>ターゲット選定基準</h2>
+  </div>
+
+  <div class="highlight-box">
+    <p>選定の軸: 「儲かってそう x DXしてなさそう」</p>
+  </div>
+
+  <div class="card">
+    <h3>DXスコア（1〜5）の判定方法</h3>
+    <p>以下の4項目を総合的に評価し、1（DX未着手）〜 5（DX先進）でスコアリングする。スコアが低いほど提案余地が大きい。</p>
+    <div class="dx-criteria">
+      <div class="dx-criteria-item">
+        <strong>Web検索ヒット数</strong><br>
+        「社名 + DX / AI / 効率化」で検索。ヒットが少ない = 未着手の可能性大。
+      </div>
+      <div class="dx-criteria-item">
+        <strong>コーポレートサイトの状態</strong><br>
+        更新頻度・デザインの古さ。古いサイト = IT投資が後回しの兆候。
+      </div>
+      <div class="dx-criteria-item">
+        <strong>求人キーワード</strong><br>
+        「FAX」「手書き」「紙」が求人に出てくる = アナログ運用が現場に残存。
+      </div>
+      <div class="dx-criteria-item">
+        <strong>IT部門の有無</strong><br>
+        組織図や求人にIT/DX担当が不在 = 導入パートナーのニーズが高い。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 3. 自動営業パイプライン -->
+<section id="sec3">
+  <div class="section-header">
+    <div class="section-num">3</div>
+    <h2>自動営業パイプライン</h2>
+  </div>
+
+  <div class="pipeline">
+    <div class="pipeline-step">
+      <div class="step-label">STEP 1</div>
+      <div class="step-title">自動調査</div>
+      <div class="step-detail">せんちゃんが<br>週3回（月水金）実施</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-label">STEP 2</div>
+      <div class="step-title">スコアリング</div>
+      <div class="step-detail">DXスコア算出<br>優先度判定</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-label">STEP 3</div>
+      <div class="step-title">リスト登録</div>
+      <div class="step-detail">スプレッドシートに<br>自動追加</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-label">STEP 4</div>
+      <div class="step-title">Slack報告</div>
+      <div class="step-detail">#aiエージェント事業<br>に自動投稿</div>
+    </div>
+    <div class="pipeline-step">
+      <div class="step-label">STEP 5</div>
+      <div class="step-title">アタック実行</div>
+      <div class="step-detail">手紙・フォーム<br>2段構えで接触</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>業界ローテーション</h3>
+    <p>毎回異なる業界を調査し、網羅的にカバーする。</p>
+    <div class="company-list" style="margin-top: 12px;">
+      <span class="company-tag priority-a">産廃</span>
+      <span class="company-tag priority-a">出版</span>
+      <span class="company-tag priority-a">警備</span>
+      <span class="company-tag">士業</span>
+      <span class="company-tag">不動産</span>
+      <span class="company-tag">物流</span>
+      <span class="company-tag">建設</span>
+      <span class="company-tag">介護</span>
+      <span class="company-tag">製造</span>
+      <span class="company-tag">食品卸</span>
+    </div>
+  </div>
+</section>
+
+<!-- 4. 営業先リスト -->
+<section id="sec4">
+  <div class="section-header">
+    <div class="section-num">4</div>
+    <h2>営業先リスト</h2>
+  </div>
+
+  <!-- 産廃 -->
+  <div class="card">
+    <h3>産廃配車最適化（25社）</h3>
+    <p style="margin-bottom: 16px;">配車最適化AIを軸にした提案先。DXスコアが低く、売上規模が大きい企業を優先。</p>
+
+    <div style="margin-bottom: 12px;">
+      <span class="badge badge-a">優先度 A</span>
+      <span style="font-size: 13px; color: var(--text-light); margin-left: 8px;">最優先アタック対象</span>
+    </div>
+    <div class="company-list">
+      <span class="company-tag priority-a">高俊興業</span>
+      <span class="company-tag priority-a">要興業</span>
+      <span class="company-tag priority-a">大栄環境</span>
+      <span class="company-tag priority-a">浜田</span>
+      <span class="company-tag priority-a">ミダックHD</span>
+      <span class="company-tag priority-a">石坂産業</span>
+    </div>
+
+    <div style="margin-top: 16px; margin-bottom: 12px;">
+      <span class="badge badge-b">優先度 B</span>
+      <span style="font-size: 13px; color: var(--text-light); margin-left: 8px;">9社</span>
+    </div>
+    <div class="company-list">
+      <span class="company-tag priority-b">GRNエコサイクル</span>
+      <span class="company-tag priority-b">他8社</span>
+    </div>
+
+    <div style="margin-top: 16px; margin-bottom: 12px;">
+      <span class="badge badge-c">優先度 C</span>
+      <span style="font-size: 13px; color: var(--text-light); margin-left: 8px;">10社</span>
+    </div>
+    <div class="company-list">
+      <span class="company-tag">10社（スプレッドシート参照）</span>
+    </div>
+  </div>
+
+  <!-- 警備・介護 -->
+  <div class="card">
+    <h3>警備・介護（5社）<span style="font-size: 12px; color: var(--warning); margin-left: 8px; font-weight: 500;">NEW</span></h3>
+    <p style="margin-bottom: 16px;">シフト管理AI + 経理自動化 + BPRを軸にした提案先。アナログ文化が根強く、導入効果が大きい領域。</p>
+
+    <table>
+      <thead>
+        <tr>
+          <th style="width: 50px;">順位</th>
+          <th>会社名</th>
+          <th style="width: 90px;">売上</th>
+          <th style="width: 100px;">DXスコア</th>
+          <th>提案内容</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>1</strong></td>
+          <td><strong>サンエス警備保障</strong></td>
+          <td>230億</td>
+          <td>
+            <div class="dx-score">
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+            </div>
+          </td>
+          <td>シフト管理AI + 経理 + BPR</td>
+        </tr>
+        <tr>
+          <td><strong>2</strong></td>
+          <td><strong>シミズオクト</strong></td>
+          <td>397億</td>
+          <td>
+            <div class="dx-score">
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+            </div>
+          </td>
+          <td>シフト管理AI + 経理 + BPR</td>
+        </tr>
+        <tr>
+          <td><strong>3</strong></td>
+          <td><strong>共栄セキュリティー</strong></td>
+          <td>100億</td>
+          <td>
+            <div class="dx-score">
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+            </div>
+          </td>
+          <td>シフト管理AI + 経理</td>
+        </tr>
+        <tr>
+          <td><strong>4</strong></td>
+          <td><strong>ケア21</strong></td>
+          <td>481億</td>
+          <td>
+            <div class="dx-score">
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+            </div>
+          </td>
+          <td>シフト管理AI + 経理</td>
+        </tr>
+        <tr>
+          <td><strong>5</strong></td>
+          <td><strong>にしけい</strong></td>
+          <td>198億</td>
+          <td>
+            <div class="dx-score">
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot filled low"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+              <span class="dx-dot"></span>
+            </div>
+          </td>
+          <td>シフト管理AI + BPR</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<!-- 5. アタック手法 -->
+<section id="sec5">
+  <div class="section-header">
+    <div class="section-num">5</div>
+    <h2>アタック手法</h2>
+  </div>
+
+  <div class="highlight-box">
+    <p>基本戦術: 手紙 + 問い合わせフォームの2段構え</p>
+  </div>
+
+  <div class="approach-grid">
+    <div class="approach-card">
+      <h4>紙レター（トップアプローチ）</h4>
+      <p>代表者名宛で手紙を送付する。警備・介護業界はアナログ文化が根強く、紙の手紙が最も目に留まりやすい。社長・代表が直接目を通す確率が高い。</p>
+    </div>
+    <div class="approach-card">
+      <h4>問い合わせフォーム</h4>
+      <p>コーポレートサイトの問い合わせフォームから接触。手紙と同時に送ることで、担当部門にもリーチする。具体的な数値（コスト削減効果など）を明記。</p>
+    </div>
+    <div class="approach-card">
+      <h4>IR窓口（上場企業向け）</h4>
+      <p>上場企業に対してはIR問い合わせを活用。DX推進・業務効率化への取り組みについて、投資家視点からの質問形式で接触する。</p>
+    </div>
+    <div class="approach-card">
+      <h4>電話フォロー</h4>
+      <p>手紙・フォーム送付後、1週間を目安に電話フォローを実施。「先日お送りした資料について」と切り出し、具体的な面談設定を狙う。</p>
+    </div>
+  </div>
+</section>
+
+<!-- 6. スケジュール -->
+<section id="sec6">
+  <div class="section-header">
+    <div class="section-num">6</div>
+    <h2>スケジュール（4月〜5月）</h2>
+  </div>
+
+  <div class="timeline">
+    <div class="timeline-item">
+      <div class="week">4/7 週 &#8212; 第1波</div>
+      <div class="actions">
+        <strong>サンエス警備保障:</strong> 手紙送付 + 問い合わせフォーム<br>
+        <strong>シミズオクト:</strong> 問い合わせフォーム + LinkedIn接触
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="week">4/14 週 &#8212; フォロー + 第2波</div>
+      <div class="actions">
+        <strong>サンエス警備保障:</strong> 電話フォロー<br>
+        <strong>共栄セキュリティー:</strong> IR問い合わせ + フォーム<br>
+        <strong>シミズオクト:</strong> 電話フォロー
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="week">4/21 週 &#8212; 第3波</div>
+      <div class="actions">
+        <strong>ケア21:</strong> IR問い合わせ + フォーム + レター送付<br>
+        <strong>共栄セキュリティー:</strong> 手紙送付 + 電話フォロー
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="week">4/28 週 &#8212; 第4波</div>
+      <div class="actions">
+        <strong>にしけい:</strong> 手紙送付 + 問い合わせフォーム
+      </div>
+    </div>
+    <div class="timeline-item">
+      <div class="week">5/7 週 &#8212; 全社フォロー</div>
+      <div class="actions">
+        全社に対して電話・メールで2次フォロー。反応があった企業から優先的に面談設定へ進める。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 7. 武器（実績） -->
+<section id="sec7">
+  <div class="section-header">
+    <div class="section-num">7</div>
+    <h2>武器（実績）</h2>
+  </div>
+  <p style="margin-bottom: 16px;">提案時に活用できる匿名化済み実績。具体的な数値で説得力を出す。</p>
+
+  <div class="weapon-grid">
+    <div class="weapon-card">
+      <div class="label">警備業界向け</div>
+      <div class="title">シフト管理AI</div>
+      <div class="detail">首都圏の警備会社で運用中。手作業で2時間かかっていたシフト作成を、AIが数分で自動生成。</div>
+    </div>
+    <div class="weapon-card">
+      <div class="label">産廃業界向け</div>
+      <div class="title">配車最適化AI</div>
+      <div class="detail">東海エリアの産廃事業者で稼働中。ドライバー19名・1日150件の配車を最適化。</div>
+    </div>
+    <div class="weapon-card">
+      <div class="label">出版業界向け</div>
+      <div class="title">画像監修AI</div>
+      <div class="detail">大手出版社にてトライアル実施中。画像チェック作業の大幅な時間短縮を実現。</div>
+    </div>
+    <div class="weapon-card">
+      <div class="label">全業界共通</div>
+      <div class="title">経理自動化</div>
+      <div class="detail">自社で運用中。仕分け・請求書処理・月次サマリーの作成を自動化し、経理工数を削減。</div>
+    </div>
+  </div>
+</section>
+
+<!-- 8. 関連リンク -->
+<section id="sec8">
+  <div class="section-header">
+    <div class="section-num">8</div>
+    <h2>関連リンク</h2>
+  </div>
+
+  <a class="link-card" href="https://docs.google.com/spreadsheets/d/1r82FcshP1burY5T5cwS20EWdjojD4COcdv0EzTB7KlY/" target="_blank">
+    <div class="link-icon">&#128202;</div>
+    <div>
+      <div class="link-title">営業先スプレッドシート</div>
+      <div class="link-url">docs.google.com/spreadsheets/d/1r82Fcs...</div>
+    </div>
+  </a>
+
+  <a class="link-card" href="https://shinsukesaito723.github.io/blueaicrew-sales/" target="_blank">
+    <div class="link-icon">&#128196;</div>
+    <div>
+      <div class="link-title">産廃配車提案書</div>
+      <div class="link-url">shinsukesaito723.github.io/blueaicrew-sales/</div>
+    </div>
+  </a>
+
+  <a class="link-card" href="https://docs.google.com/spreadsheets/d/1r82FcshP1burY5T5cwS20EWdjojD4COcdv0EzTB7KlY/" target="_blank">
+    <div class="link-icon">&#127908;</div>
+    <div>
+      <div class="link-title">ウェビナー登壇先リスト</div>
+      <div class="link-url">同スプレッドシート内のシート</div>
+    </div>
+  </a>
+</section>
+
+</div>
+
+<footer>
+  <strong>Blue AI Crew</strong> - 合同会社青橋 | 社内共有用資料 | 2026年4月4日作成
+</footer>
+
+</body>
+</html>
