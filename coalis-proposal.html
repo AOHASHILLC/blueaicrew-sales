@@ -1,0 +1,2082 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coalis AI Crew 導入のご提案</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1a4a7a;
+  --color-primary-light: #2b7cca;
+  --color-primary-pale: #e8f2fc;
+  --color-primary-dark: #0d3259;
+  --color-accent: #c9a84c;
+  --color-text: #1a2a3a;
+  --color-text-light: #6b7280;
+  --color-bg: #ffffff;
+  --color-bg-alt: #f4f8fd;
+  --color-bg-warm: #fafbfc;
+  --color-border: #d1d5db;
+  --color-border-light: #e5e7eb;
+  --color-success: #059669;
+  --color-warning: #d97706;
+  --color-danger: #dc2626;
+  --shadow-1: 0 1px 4px rgba(0,0,0,0.06);
+  --shadow-2: 0 2px 12px rgba(0,0,0,0.08);
+  --shadow-3: 0 4px 24px rgba(0,0,0,0.12);
+  --font-ja: 'Noto Sans JP', sans-serif;
+  --font-en: 'Inter', system-ui, sans-serif;
+  --radius: 12px;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  font-family: var(--font-ja);
+  font-size: 15px;
+  line-height: 1.85;
+  letter-spacing: 0.02em;
+  color: var(--color-text);
+  background: var(--color-bg);
+  word-break: keep-all;
+  overflow-wrap: anywhere;
+}
+
+/* ======== Container ======== */
+.container { max-width: 900px; margin: 0 auto; padding: 0 24px; }
+@media (min-width: 768px) { .container { padding: 0 40px; } }
+
+/* ======== Hero ======== */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary) 0%, #0d3259 60%, #091e36 100%);
+  color: #fff;
+  text-align: center;
+  padding: 100px 24px 72px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -30%;
+  width: 700px;
+  height: 700px;
+  background: radial-gradient(circle, rgba(43,124,202,0.15) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -40%;
+  left: -20%;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(circle, rgba(201,168,76,0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+.hero h1 {
+  font-size: clamp(26px, 5vw, 42px);
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: 0.05em;
+  margin-bottom: 16px;
+  position: relative;
+}
+.hero .subtitle {
+  font-size: clamp(15px, 3vw, 20px);
+  font-weight: 400;
+  opacity: 0.85;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+.hero .meta {
+  font-size: 13px;
+  opacity: 0.55;
+  line-height: 1.9;
+}
+.hero .divider-line {
+  width: 60px;
+  height: 2px;
+  background: var(--color-accent);
+  margin: 0 auto 28px;
+  opacity: 0.7;
+}
+
+/* ======== TOC ======== */
+.toc {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius);
+  padding: 28px 32px;
+  margin: 40px 0;
+}
+.toc h2 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 16px;
+  letter-spacing: 0.04em;
+}
+.toc ol {
+  list-style: none;
+  counter-reset: toc-counter;
+  padding: 0;
+}
+.toc li {
+  counter-increment: toc-counter;
+  margin-bottom: 6px;
+}
+.toc li a {
+  color: var(--color-text);
+  text-decoration: none;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px;
+  border-radius: 6px;
+  transition: background 0.15s;
+}
+.toc li a:hover {
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+}
+.toc li a::before {
+  content: counter(toc-counter, decimal-leading-zero);
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--color-primary-light);
+  min-width: 22px;
+}
+
+/* ======== Sections ======== */
+section { padding: 60px 0; }
+section + section { border-top: 1px solid var(--color-border-light); }
+section.alt { background: var(--color-bg-alt); }
+section h2 {
+  font-size: clamp(20px, 4vw, 28px);
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  line-height: 1.4;
+  letter-spacing: 0.04em;
+}
+.section-lead {
+  color: var(--color-text-light);
+  font-size: 14px;
+  margin-bottom: 32px;
+  line-height: 1.85;
+}
+section h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  margin-top: 32px;
+  color: var(--color-text);
+}
+section h4 {
+  font-size: 16px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-top: 20px;
+  color: var(--color-primary-dark);
+}
+p { margin-bottom: 16px; }
+ul, ol { margin-bottom: 16px; padding-left: 24px; }
+li { margin-bottom: 6px; }
+
+/* ======== Section Numbers ======== */
+.section-num {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 13px;
+  font-weight: 700;
+  font-family: var(--font-en);
+  margin-right: 10px;
+  vertical-align: middle;
+  position: relative;
+  top: -2px;
+}
+
+/* ======== Alert ======== */
+.alert {
+  border-left: 4px solid;
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  font-size: 14px;
+  line-height: 1.85;
+}
+.alert-info { border-color: var(--color-primary-light); background: var(--color-primary-pale); }
+.alert-success { border-color: var(--color-success); background: #ecfdf5; }
+.alert-warning { border-color: var(--color-warning); background: #fffbeb; }
+
+/* ======== Chat UI ======== */
+.chat-window {
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  padding: 20px;
+  margin: 16px 0 28px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.chat-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.chat-row.user { justify-content: flex-end; }
+.chat-row.ai { justify-content: flex-start; }
+.chat-bubble {
+  max-width: 78%;
+  padding: 10px 16px;
+  border-radius: 16px;
+  font-size: 14px;
+  line-height: 1.75;
+}
+.chat-row.user .chat-bubble {
+  background: var(--color-primary);
+  color: #fff;
+  border-bottom-right-radius: 4px;
+}
+.chat-row.ai .chat-bubble {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-bottom-left-radius: 4px;
+}
+.chat-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: var(--color-text-light);
+  flex-shrink: 0;
+  padding-top: 10px;
+}
+.chat-row.user .chat-label { order: 1; }
+.chat-note {
+  font-size: 12px;
+  color: var(--color-success);
+  font-weight: 700;
+  text-align: center;
+  padding: 4px 0;
+}
+
+/* ======== Tables ======== */
+.data-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 28px;
+  font-size: 14px;
+}
+.data-table th {
+  background: var(--color-primary);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 13px;
+  letter-spacing: 0.03em;
+}
+.data-table th:first-child { border-radius: 8px 0 0 0; }
+.data-table th:last-child { border-radius: 0 8px 0 0; }
+.data-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: top;
+}
+.data-table tr:nth-child(even) td { background: var(--color-bg-alt); }
+.data-table tr:last-child td:first-child { border-radius: 0 0 0 8px; }
+.data-table tr:last-child td:last-child { border-radius: 0 0 8px 0; }
+
+/* ======== Cards ======== */
+.card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  padding: 24px;
+}
+.card h4 {
+  font-size: 15px;
+  font-weight: 700;
+  margin-bottom: 8px;
+  margin-top: 0;
+  color: var(--color-primary);
+}
+.card p { font-size: 14px; margin-bottom: 0; }
+.card ul { font-size: 14px; margin-bottom: 0; }
+
+.grid-2 { display: grid; grid-template-columns: 1fr; gap: 20px; margin-top: 20px; }
+.grid-3 { display: grid; grid-template-columns: 1fr; gap: 16px; margin-top: 20px; }
+@media (min-width: 768px) {
+  .grid-2 { grid-template-columns: repeat(2, 1fr); }
+  .grid-3 { grid-template-columns: repeat(3, 1fr); }
+}
+
+/* ======== Crew Cards ======== */
+.crew-card {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  padding: 28px 24px;
+  text-align: center;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+.crew-card:hover {
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-2);
+}
+.crew-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: var(--color-primary-pale);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 12px;
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--color-primary);
+  font-family: var(--font-en);
+}
+.crew-card .name {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 2px;
+}
+.crew-card .role {
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--color-text-light);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+}
+.crew-card .tone {
+  font-size: 13px;
+  color: var(--color-text-light);
+  font-style: italic;
+  margin-bottom: 12px;
+}
+.crew-card .desc {
+  font-size: 14px;
+  text-align: left;
+  line-height: 1.75;
+}
+.crew-card .desc ul { padding-left: 18px; }
+
+/* ======== Scene Blocks ======== */
+.scene-block {
+  background: var(--color-bg);
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-1);
+  padding: 28px;
+  margin: 24px 0;
+}
+.scene-block h4 {
+  margin-top: 0;
+  font-size: 17px;
+}
+.scene-block .scene-label {
+  display: inline-block;
+  background: var(--color-primary);
+  color: #fff;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  margin-bottom: 10px;
+  letter-spacing: 0.05em;
+}
+
+/* ======== Output Preview ======== */
+.output-preview {
+  background: #f8f9fa;
+  border: 1px solid var(--color-border-light);
+  border-radius: 8px;
+  padding: 20px;
+  margin: 16px 0;
+  font-size: 13px;
+  line-height: 1.85;
+  font-family: var(--font-ja);
+}
+.output-preview h5 {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--color-primary);
+  margin-bottom: 8px;
+  margin-top: 12px;
+}
+.output-preview h5:first-child { margin-top: 0; }
+.output-preview ul { padding-left: 18px; font-size: 13px; }
+.output-preview .market-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 4px 0;
+  border-bottom: 1px solid var(--color-border-light);
+  font-size: 13px;
+}
+.output-preview .market-row:last-child { border-bottom: none; }
+.output-preview .up { color: var(--color-danger); font-weight: 700; }
+.output-preview .down { color: var(--color-success); font-weight: 700; }
+.output-preview .neutral { color: var(--color-text-light); font-weight: 700; }
+
+/* ======== Steps ======== */
+.step-list { list-style: none; padding: 0; counter-reset: step-counter; }
+.step-list li {
+  counter-increment: step-counter;
+  padding: 20px 24px 20px 70px;
+  position: relative;
+  margin-bottom: 12px;
+  background: var(--color-bg);
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius);
+}
+.step-list li::before {
+  content: 'Step ' counter(step-counter);
+  position: absolute;
+  left: 16px;
+  top: 20px;
+  font-family: var(--font-en);
+  font-weight: 700;
+  font-size: 12px;
+  color: var(--color-primary);
+  letter-spacing: 0.03em;
+}
+.step-list li strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+.step-list li .time {
+  display: inline-block;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 10px;
+  margin-left: 8px;
+}
+
+/* ======== Dashboard Preview ======== */
+.dashboard-preview {
+  background: linear-gradient(135deg, #0f2942 0%, #1a4a7a 100%);
+  border-radius: var(--radius);
+  padding: 28px;
+  margin: 20px 0;
+  color: #fff;
+}
+.dashboard-preview h4 {
+  color: #fff;
+  font-size: 16px;
+  margin-bottom: 16px;
+  margin-top: 0;
+}
+.dash-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+@media (min-width: 768px) {
+  .dash-grid { grid-template-columns: repeat(2, 1fr); }
+}
+.dash-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 8px;
+  padding: 16px;
+}
+.dash-card .dash-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  opacity: 0.6;
+  margin-bottom: 6px;
+  text-transform: uppercase;
+}
+.dash-card .dash-value {
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+/* ======== FAQ ======== */
+.faq-item {
+  border: 1px solid var(--color-border-light);
+  border-radius: var(--radius);
+  margin-bottom: 12px;
+  overflow: hidden;
+}
+.faq-q {
+  font-weight: 700;
+  font-size: 14px;
+  padding: 16px 20px;
+  background: var(--color-bg-alt);
+  color: var(--color-primary);
+}
+.faq-a {
+  padding: 16px 20px;
+  font-size: 14px;
+  line-height: 1.85;
+}
+
+/* ======== File Table ======== */
+.file-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0 28px;
+  font-size: 13px;
+}
+.file-table th {
+  background: var(--color-primary-dark);
+  color: #fff;
+  font-weight: 700;
+  padding: 10px 14px;
+  text-align: left;
+  font-size: 12px;
+  letter-spacing: 0.04em;
+}
+.file-table th:first-child { border-radius: 8px 0 0 0; }
+.file-table th:last-child { border-radius: 0 8px 0 0; }
+.file-table td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border-light);
+  vertical-align: top;
+}
+.file-table tr:nth-child(even) td { background: var(--color-bg-alt); }
+.file-table code {
+  background: var(--color-primary-pale);
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 12px;
+  font-family: 'SF Mono', 'Monaco', monospace;
+  color: var(--color-primary-dark);
+}
+
+/* ======== Footer ======== */
+.footer {
+  background: var(--color-primary-dark);
+  color: rgba(255,255,255,0.7);
+  text-align: center;
+  padding: 40px 24px;
+  font-size: 13px;
+  line-height: 1.9;
+}
+.footer strong { color: #fff; }
+
+/* ======== Utility ======== */
+.mt-0 { margin-top: 0; }
+.mb-0 { margin-bottom: 0; }
+.mb-sm { margin-bottom: 8px; }
+.text-sm { font-size: 13px; }
+.text-muted { color: var(--color-text-light); }
+.text-center { text-align: center; }
+.badge {
+  display: inline-block;
+  background: var(--color-primary-pale);
+  color: var(--color-primary);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 3px 10px;
+  border-radius: 20px;
+  letter-spacing: 0.03em;
+}
+
+/* ======== Print ======== */
+@media print {
+  .hero { padding: 48px 24px 36px; }
+  section { padding: 28px 0; }
+  .toc { break-after: page; }
+  .scene-block, .card, .crew-card { break-inside: avoid; }
+}
+</style>
+</head>
+<body>
+
+<!-- ========================================== -->
+<!-- HERO / 表紙 -->
+<!-- ========================================== -->
+<header class="hero">
+  <h1>Coalis AI Crew<br>導入のご提案</h1>
+  <div class="divider-line"></div>
+  <p class="subtitle">1つのインターフェースから、すべての業務を操る</p>
+  <p class="meta">
+    合同会社青橋 / Blue AI Crew<br>
+    2026年4月<br>
+    作成: 斉藤信介
+  </p>
+</header>
+
+<!-- ========================================== -->
+<!-- 目次 -->
+<!-- ========================================== -->
+<div class="container">
+  <nav class="toc">
+    <h2>目次</h2>
+    <ol>
+      <li><a href="#sec1">Claude Code とは -- なぜこれが最強なのか</a></li>
+      <li><a href="#sec2">AI Crew とは -- 6人のプロフェッショナルチーム</a></li>
+      <li><a href="#sec3">導入するファイル一覧</a></li>
+      <li><a href="#sec4">具体的な活用シーン</a></li>
+      <li><a href="#sec5">Coalis Daily Brief ダッシュボード</a></li>
+      <li><a href="#sec6">セキュリティ・安全性</a></li>
+      <li><a href="#sec7">導入の流れ</a></li>
+      <li><a href="#sec8">料金・サポート体制</a></li>
+      <li><a href="#sec9">FAQ（よくあるご質問）</a></li>
+    </ol>
+  </nav>
+</div>
+
+<!-- ========================================== -->
+<!-- Section 1: Claude Code とは -->
+<!-- ========================================== -->
+<section id="sec1">
+  <div class="container">
+    <h2><span class="section-num">1</span>Claude Code とは -- なぜこれが最強なのか</h2>
+    <p class="section-lead">普段お使いのサービスすべてに、1つの画面からつながる新しい働き方。</p>
+
+    <h3>1つのCLIからすべてに接続</h3>
+    <p>
+      Claude Code は、Anthropic社が提供する最新のAIインターフェースです。最大の特徴は、<strong>Gmail、Googleカレンダー、Googleスプレッドシート、Googleドライブ、Slack、Web検索</strong>など、普段お使いのサービスすべてに「たった1つの画面」から接続できることです。
+    </p>
+    <p>
+      従来であれば、メールを確認するためにGmailを開き、予定を見るためにカレンダーを開き、チャットを確認するためにSlackを開き......と、1日に何十回も画面を切り替えていたはずです。Claude Code を導入すると、この<strong>「画面を切り替える」という作業そのものがなくなります</strong>。すべてが1つの場所で完結します。
+    </p>
+
+    <h3>自然な言葉で操作できる</h3>
+    <p>
+      Claude Code への指示は、日本語の自然な言葉で行います。コマンドや専門用語を覚える必要はありません。たとえば：
+    </p>
+    <ul>
+      <li>「今日の予定教えて」と入力するだけで、Googleカレンダーから本日のスケジュールが表示されます</li>
+      <li>「未読メールある？」と聞くだけで、Gmailの未読メールが要約付きで一覧されます</li>
+      <li>「この業界の最新ニュース調べて」と頼むだけで、Web検索を行い結果をまとめてくれます</li>
+    </ul>
+
+    <h3>AIが会話の文脈を理解する</h3>
+    <p>
+      Claude Code は、会話の流れ（文脈）を理解します。たとえば、最初に「〇〇業界について調べて」と依頼し、その調査結果を見た後に「さっき調べた内容をスプレッドシートにまとめて」と続けるだけで、AIは「さっきの調査結果」が何を指すかを理解して作業してくれます。
+    </p>
+    <p>
+      これは単なる検索エンジンやチャットボットとは根本的に異なるポイントです。AIが<strong>あなたの仕事の流れに沿って、連続した作業を進めてくれる</strong>のです。
+    </p>
+
+    <h3>画面を切り替えない仕事のイメージ</h3>
+    <div class="chat-window">
+      <div class="chat-row user">
+        <span class="chat-label">上原さん</span>
+        <div class="chat-bubble">おはよう。今日の予定と未読メール教えて</div>
+      </div>
+      <div class="chat-row ai">
+        <span class="chat-label">AI</span>
+        <div class="chat-bubble">
+          おはようございます。本日の予定は3件です。<br>
+          10:00 投資委員会（Zoom）<br>
+          14:00 〇〇社DD面談<br>
+          16:30 社内MTG<br><br>
+          未読メールは8件あります。重要なものは......<br>
+          (1) 〇〇ファンドLP様からの四半期レポート確認依頼<br>
+          (2) 〇〇社からのNDA返送......
+        </div>
+      </div>
+      <div class="chat-row user">
+        <span class="chat-label">上原さん</span>
+        <div class="chat-bubble">LP様への返信ドラフト書いて。レポートは来週月曜に送付すると伝えて</div>
+      </div>
+      <div class="chat-row ai">
+        <span class="chat-label">AI</span>
+        <div class="chat-bubble">
+          ドラフトを作成しました。<br><br>
+          件名: Re: 四半期レポートの件<br>
+          本文: いつもお世話になっております。四半期レポートにつきましては、来週月曜日（4/13）に送付させていただきます......<br><br>
+          下書きとしてGmailに保存しました。内容をご確認ください。
+        </div>
+      </div>
+      <div class="chat-note">Gmailを開かずにメール対応が完了</div>
+    </div>
+
+    <h3>接続するサービス一覧（MCP）</h3>
+    <p>
+      MCPとは「Model Context Protocol」の略で、Claude Code と各サービスをつなぐ接続の仕組みです。以下のサービスに接続し、それぞれの機能をClaude Code から直接操作できるようになります。
+    </p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 18%;">サービス</th>
+          <th style="width: 32%;">できること</th>
+          <th>具体例</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>Gmail</strong></td>
+          <td>メールの確認、検索、下書き作成、送信補助</td>
+          <td>「未読メールを重要度順にまとめて」「〇〇さんに返信のドラフト作って」「今週のメールで投資案件に関するものだけ抽出して」</td>
+        </tr>
+        <tr>
+          <td><strong>Google Calendar</strong></td>
+          <td>予定の確認、新規作成、変更、空き時間の検索</td>
+          <td>「今週の予定を一覧にして」「明日14時にMTGを入れて」「来週の空き時間を教えて」</td>
+        </tr>
+        <tr>
+          <td><strong>Google Sheets</strong></td>
+          <td>データの読み書き、集計、分析、グラフ作成</td>
+          <td>「ポートフォリオの月次データを集計して」「前年比の推移をグラフにして」「KPIシートを更新して」</td>
+        </tr>
+        <tr>
+          <td><strong>Google Drive</strong></td>
+          <td>ファイルの検索、閲覧、アップロード、整理</td>
+          <td>「先月のDD資料どこにある？」「この資料をドライブに保存して」「投資委員会フォルダの中身を見せて」</td>
+        </tr>
+        <tr>
+          <td><strong>Slack</strong></td>
+          <td>メッセージの送受信、チャンネル検索、スレッド確認</td>
+          <td>「〇〇チャンネルの未読まとめて」「チームに進捗報告して」「昨日の議論の要点を教えて」</td>
+        </tr>
+        <tr>
+          <td><strong>Web検索</strong></td>
+          <td>ニュース検索、業界リサーチ、企業情報収集</td>
+          <td>「この業界のM&A動向を調べて」「〇〇社の最新ニュースは？」「日経平均の今日の動きは？」</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info">
+      <strong>ポイント:</strong> これらのサービスは「接続」するだけで、データがどこかに送られるわけではありません。APIキー（接続用の鍵）はすべてお手元のパソコン内に保存されます。セキュリティについては後述の「セキュリティ・安全性」セクションで詳しくご説明します。
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 2: AI Crew とは -->
+<!-- ========================================== -->
+<section id="sec2" class="alt">
+  <div class="container">
+    <h2><span class="section-num">2</span>AI Crew とは -- 6人のプロフェッショナルチーム</h2>
+    <p class="section-lead">投資ファームの精鋭チーム「The Firm」。6人のプロフェッショナルが、上原さんの業務をあらゆる面からサポートします。</p>
+
+    <h3>世界観: The Firm</h3>
+    <p>
+      AI Crew は、1つのAI（Claude Code）に「6つの人格（キャラクター）」を設定したものです。キャラクターごとに専門分野・口調・対応範囲が異なり、名前で呼びかけるだけで切り替わります。
+    </p>
+    <p>
+      Coalis様向けの世界観は<strong>「The Firm（ファーム）」</strong>。PE/FA業務を支えるプロフェッショナルチームというコンセプトで、落ち着いた知性と機動力を兼ね備えた頼れるパートナー集団です。各キャラクターはそれぞれ異なる強みを持ち、チームとして連携して業務を支えます。
+    </p>
+
+    <div class="alert alert-info">
+      <strong>使い方のイメージ:</strong> 「まどか、今日の予定教えて」「恭介、この業界調べて」のように、名前で呼びかけるだけでキャラクターが切り替わります。特に指定しなければ、総合窓口のまどかが対応し、必要に応じて他のメンバーに引き継ぎます。
+    </div>
+
+    <!-- まどか -->
+    <div class="scene-block" style="margin-top: 32px;">
+      <div class="scene-label">Member 01</div>
+      <h4 class="mt-0">まどか -- 総合窓口 / チーフ・オブ・スタッフ（CoS）</h4>
+      <p class="text-muted" style="font-style: italic; margin-bottom: 16px;">口調: 「承りました」「お任せください」-- 落ち着いていて頼りになる、知的な秘書</p>
+
+      <p><strong>できること:</strong></p>
+      <ul>
+        <li>毎日の業務の全体統括 -- 今日やるべきことの整理と優先順位付け</li>
+        <li>各キャラクターへの橋渡し -- 適切な担当者に仕事を振り分け</li>
+        <li>日常的な質問への回答 -- 「あの件どうなってた？」のような確認</li>
+        <li>タスク管理 -- やるべきことをリスト化し、進捗を追跡</li>
+        <li>簡単な調べもの -- すぐに回答できる質問にはその場で対応</li>
+        <li>リマインド -- 「明日までに〇〇を確認してください」のような声かけ</li>
+      </ul>
+
+      <p><strong>会話例:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">まどか、今日何やればいい？</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">まどか</span>
+          <div class="chat-bubble">
+            承りました。本日のタスクを整理しますね。<br><br>
+            【最優先】<br>
+            - 10:00 投資委員会（資料は昨日の時点で準備済みです）<br>
+            - 〇〇ファンドLP様への四半期レポート返信（期限: 本日中）<br><br>
+            【本日中】<br>
+            - 14:00 〇〇社DD面談（恭介が事前資料をまとめています）<br>
+            - NDA返送の確認<br><br>
+            【余裕があれば】<br>
+            - 来週の出張手配<br>
+            - 新規案件パイプラインの更新<br><br>
+            LP様への返信、下書きをお作りしましょうか？
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">お願い。あと、DD面談の事前資料見せて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">まどか</span>
+          <div class="chat-bubble">
+            LP様への返信ドラフト作成と、DD面談の事前資料表示、承りました。<br>
+            返信ドラフトはくるみに依頼し、事前資料は恭介がまとめたものをお見せしますね。少々お待ちください。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 恭介 -->
+    <div class="scene-block">
+      <div class="scene-label">Member 02</div>
+      <h4 class="mt-0">恭介 -- リサーチャー / 市場・競合分析</h4>
+      <p class="text-muted" style="font-style: italic; margin-bottom: 16px;">口調: 「調べてきました」「面白い動きがあります」-- 知的好奇心が強く、発見を共有するのが好き</p>
+
+      <p><strong>できること:</strong></p>
+      <ul>
+        <li>業界動向リサーチ -- 特定業界のM&A動向、市場規模、成長率を調査</li>
+        <li>企業基本情報の収集 -- ターゲット企業の概要、沿革、経営陣情報を整理</li>
+        <li>競合分析 -- 同業他社の動き、料率比較、サービス比較を一覧化</li>
+        <li>DD（デューデリジェンス）チェックリストの作成 -- 調査すべき項目を体系的に整理</li>
+        <li>ニュースモニタリング -- ポートフォリオ企業・投資候補先のニュースを継続的に追跡</li>
+        <li>情報源の横断検索 -- 日経、NewsPicks、X、業界レポート等から横断的に情報収集</li>
+      </ul>
+
+      <p><strong>会話例:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">恭介、ヘルスケアIT業界のM&A動向を調べて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">恭介</span>
+          <div class="chat-bubble">
+            調べてきました。ヘルスケアIT業界のM&A動向、直近6か月のまとめです。<br><br>
+            【主要ディール】<br>
+            - A社によるB社の買収（3月発表、EV 500億円）<br>
+            - C社とD社の経営統合（2月合意、対等合併）<br>
+            - 海外ファンドE社による日本市場参入（F社へのマイノリティ出資）<br><br>
+            【市場トレンド】<br>
+            - 電子カルテ分野の統合が加速中<br>
+            - 遠隔医療関連のバリュエーションが上昇傾向<br>
+            - 厚労省のDX推進政策が追い風に<br><br>
+            【マルチプル（業界平均）】<br>
+            - EV/EBITDA: 12-18x<br>
+            - EV/Revenue: 4-8x<br><br>
+            より詳しいレポートにまとめましょうか？それとも特定の企業を深掘りしますか？
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">B社について深掘りして。DD用の基本情報まとめて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">恭介</span>
+          <div class="chat-bubble">
+            面白い動きがあります。B社の基本情報をDD用にまとめますね。<br><br>
+            会社概要、財務サマリー、主要顧客、競合ポジショニング、リスク要因の5項目でまとめます。Web検索とGoogleドライブの既存資料を横断して調べます。少々お待ちください。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- まなみ -->
+    <div class="scene-block">
+      <div class="scene-label">Member 03</div>
+      <h4 class="mt-0">まなみ -- アナリスト / データ分析・可視化</h4>
+      <p class="text-muted" style="font-style: italic; margin-bottom: 16px;">口調: 「数字で見てみましょう」「ここがポイントです」-- 冷静で分析的、数字で語る</p>
+
+      <p><strong>できること:</strong></p>
+      <ul>
+        <li>財務データの集計・分析 -- 売上、利益、キャッシュフローの推移分析</li>
+        <li>ポートフォリオ管理 -- ファンド全体のパフォーマンス追跡とKPIモニタリング</li>
+        <li>スプレッドシートでのデータ整理 -- Googleスプレッドシートの読み書き・自動整理</li>
+        <li>バリュエーション計算のサポート -- DCF、マルチプル法の計算補助</li>
+        <li>グラフ・チャートの生成 -- 数値データを視覚的にわかりやすく可視化</li>
+        <li>比較表の作成 -- 複数企業・複数案件の横比較を一覧化</li>
+      </ul>
+
+      <p><strong>会話例:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">まなみ、ポートフォリオ企業の前四半期パフォーマンスをまとめて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">まなみ</span>
+          <div class="chat-bubble">
+            数字で見てみましょう。Googleスプレッドシートの「ポートフォリオKPI」シートから、2026年Q1の実績を集計しました。<br><br>
+            【ファンド全体】<br>
+            - 運用資産総額: XXX億円（前期比 +X.X%）<br>
+            - IRR（実現済み）: XX.X%<br>
+            - MOIC: X.Xx<br><br>
+            【個社別ハイライト】<br>
+            - A社: 売上前年比+15%、EBITDA改善（ここがポイントです）<br>
+            - B社: 新規顧客獲得が計画比120%で進捗<br>
+            - C社: 原材料高騰の影響でマージン低下、要注視<br><br>
+            詳細なグラフ付きレポートをHTML形式で出力しましょうか？
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">お願い。LP向けレポートに使えるグラフも入れて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">まなみ</span>
+          <div class="chat-bubble">
+            承知しました。LP向けレポート用に、以下のグラフを含むHTMLレポートを作成します。<br>
+            (1) ファンドIRR推移グラフ<br>
+            (2) ポートフォリオ構成比（セクター別）<br>
+            (3) 各社EBITDA推移の比較チャート<br>
+            (4) 投資回収状況のウォーターフォール<br><br>
+            10分ほどお時間いただきます。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- くるみ -->
+    <div class="scene-block">
+      <div class="scene-label">Member 04</div>
+      <h4 class="mt-0">くるみ -- ライター / 資料・レポート作成</h4>
+      <p class="text-muted" style="font-style: italic; margin-bottom: 16px;">口調: 「まとめました」「この構成でいかがでしょう」-- 丁寧で構成力がある、資料づくりのプロ</p>
+
+      <p><strong>できること:</strong></p>
+      <ul>
+        <li>投資委員会向け投資メモの自動生成 -- 案件概要、投資テーマ、リスク・リターンを構造化</li>
+        <li>LP向け四半期レポートのドラフト -- パフォーマンスデータとナラティブを組み合わせ</li>
+        <li>ティーザー・IM（インフォメーションメモランダム）のドラフト -- 案件紹介資料の初稿</li>
+        <li>会議議事録の自動整理 -- 文字起こしデータから要約・決定事項・TODOを抽出</li>
+        <li>営業資料・提案書のHTML作成 -- プロフェッショナルなデザインの資料を自動生成</li>
+        <li>メール文面の作成 -- ビジネスメールのドラフトを状況に応じて作成</li>
+      </ul>
+
+      <p><strong>会話例:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">くるみ、〇〇社の投資メモのドラフト書いて。恭介が調べた情報使って</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">くるみ</span>
+          <div class="chat-bubble">
+            まとめました。恭介が収集した〇〇社の情報をもとに、投資メモのドラフトを作成しました。<br><br>
+            この構成でいかがでしょう：<br><br>
+            1. エグゼクティブサマリー<br>
+            2. 会社概要・事業内容<br>
+            3. 市場環境と競合ポジション<br>
+            4. 投資テーマ（なぜ今、この会社か）<br>
+            5. 財務サマリーとバリュエーション<br>
+            6. リスク要因と対応策<br>
+            7. 想定リターンシナリオ（Base/Bull/Bear）<br>
+            8. 推奨アクション<br><br>
+            HTML形式で出力しました。内容をご確認ください。修正点があればお知らせください。
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">いいね。リスク要因のところ、もう少し詳しく書いて。あとPDF化して</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">くるみ</span>
+          <div class="chat-bubble">
+            承知しました。リスク要因を以下の5点に拡充しました：<br>
+            (1) 規制リスク -- 〇〇法改正の影響<br>
+            (2) 競合リスク -- 大手参入の可能性<br>
+            (3) 人材リスク -- キーパーソン依存度<br>
+            (4) 市場リスク -- セクター全体の景気感度<br>
+            (5) 技術リスク -- レガシーシステムの刷新コスト<br><br>
+            HTML版を更新し、PDF出力用の形式も整えました。ブラウザの印刷機能からPDF保存いただけます。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- マスター -->
+    <div class="scene-block">
+      <div class="scene-label">Member 05</div>
+      <h4 class="mt-0">マスター -- スケジューラー / 予定・メール管理</h4>
+      <p class="text-muted" style="font-style: italic; margin-bottom: 16px;">口調: 「本日の予定です」「リマインドしますね」-- 正確で几帳面、頼れる執事</p>
+
+      <p><strong>できること:</strong></p>
+      <ul>
+        <li>今日・今週の予定確認 -- Googleカレンダーからスケジュールを取得・整理</li>
+        <li>未読メールのチェックと要約 -- Gmailの未読メールを重要度順に整理</li>
+        <li>会議のスケジュール調整 -- 空き時間の検索、予定の新規登録・変更</li>
+        <li>リマインダー設定 -- 重要な期限や予定の事前通知</li>
+        <li>メール下書き作成 -- 返信・新規メールのドラフト生成とGmail下書き保存</li>
+        <li>Slack連携 -- チームへの連絡や進捗報告の送信</li>
+      </ul>
+
+      <p><strong>会話例:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">マスター、来週の空き時間教えて。〇〇さんとMTG入れたい</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">マスター</span>
+          <div class="chat-bubble">
+            来週のカレンダーを確認しました。空き時間は以下の通りです：<br><br>
+            月曜 -- 11:00-12:00 / 15:00-17:00<br>
+            火曜 -- 終日空き<br>
+            水曜 -- 10:00-12:00 / 14:00-15:30<br>
+            木曜 -- 16:00-18:00<br>
+            金曜 -- 9:00-12:00<br><br>
+            〇〇さんとのMTG、ご希望の曜日・時間帯はありますか？候補をお伝えいただければ、カレンダーに登録します。
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">水曜の午前でお願い。場所はZoomで</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">マスター</span>
+          <div class="chat-bubble">
+            承知しました。以下の内容でカレンダーに登録します。<br><br>
+            日時: 4/15（水）10:00-11:00<br>
+            タイトル: 〇〇様 MTG<br>
+            場所: Zoom（リンク自動生成）<br>
+            出席者: 上原さん、〇〇さん<br><br>
+            登録してよろしいですか？
+          </div>
+        </div>
+        <div class="chat-note">確認を得てからカレンダーに登録</div>
+      </div>
+    </div>
+
+    <!-- ひかる -->
+    <div class="scene-block">
+      <div class="scene-label">Member 06</div>
+      <h4 class="mt-0">ひかる -- SNS担当 / 情報発信・ニュース配信</h4>
+      <p class="text-muted" style="font-style: italic; margin-bottom: 16px;">口調: 「今日の注目ニュースです」「この切り口はどうですか」-- 情報感度が高く、発信力がある</p>
+
+      <p><strong>できること:</strong></p>
+      <ul>
+        <li>朝のニュースまとめ -- 日経、NewsPicks、X等から業界関連ニュースを自動収集・要約</li>
+        <li>X（旧Twitter）投稿文面の作成 -- PE/M&A業界の話題を3パターン程度で投稿案作成</li>
+        <li>ニュースレター原稿の作成 -- 週次・月次のニュースダイジェストを自動生成</li>
+        <li>業界トレンドのキュレーション -- 注目すべき動きをピックアップして解説</li>
+        <li>ポートフォリオ企業の報道モニタリング -- 投資先に関するニュースを追跡</li>
+        <li>情報発信のタイミング提案 -- 話題性の高いトピックを見つけて投稿タイミングを提案</li>
+      </ul>
+
+      <p><strong>会話例:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">ひかる、今日のPE業界ニュースまとめて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">ひかる</span>
+          <div class="chat-bubble">
+            今日の注目ニュースです。<br><br>
+            【ヘッドライン】<br>
+            1. 〇〇ファンド、XX社を約300億円で買収 -- 物流DX領域への投資加速<br>
+            2. 経産省、スタートアップM&A促進策を発表 -- 税制優遇の拡充<br>
+            3. グローバルPEファンド、日本市場への投資意欲引き続き旺盛<br><br>
+            【マーケット】<br>
+            - 日経平均: 40,XXX円（前日比 +0.8%）<br>
+            - ドル円: 15X.XX（小幅円安）<br><br>
+            Xに投稿する文面も作りましょうか？
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">物流DXの話題で投稿案作って</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">ひかる</span>
+          <div class="chat-bubble">
+            この切り口はどうですか？3パターンご用意しました。<br><br>
+            【パターンA（事実ベース）】<br>
+            物流DX領域で大型M&Aが続いています。人手不足が深刻化する中、テクノロジーで解決できる企業への投資は今後さらに加速するでしょう。<br><br>
+            【パターンB（視点提供型）】<br>
+            物流業界の「2024年問題」は、実はPE投資にとって大きなチャンスかもしれません。DXで効率化を図れる企業は、確実にバリューアップの余地があります。<br><br>
+            【パターンC（問いかけ型）】<br>
+            物流DX、注目していますか？ドライバー不足を背景に、配車最適化・倉庫自動化の分野で投資機会が広がっています。<br><br>
+            どのパターンがお好みですか？調整も可能です。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Crew一覧サマリーカード -->
+    <h3 style="margin-top: 40px;">チーム一覧</h3>
+    <div class="grid-3">
+      <div class="crew-card">
+        <div class="crew-icon">M</div>
+        <div class="name">まどか</div>
+        <div class="role">Chief of Staff</div>
+        <div class="tone">「承りました」「お任せください」</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-icon">K</div>
+        <div class="name">恭介</div>
+        <div class="role">Researcher</div>
+        <div class="tone">「調べてきました」「面白い動きが」</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-icon">A</div>
+        <div class="name">まなみ</div>
+        <div class="role">Analyst</div>
+        <div class="tone">「数字で見てみましょう」</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-icon">W</div>
+        <div class="name">くるみ</div>
+        <div class="role">Writer</div>
+        <div class="tone">「まとめました」</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-icon">S</div>
+        <div class="name">マスター</div>
+        <div class="role">Scheduler</div>
+        <div class="tone">「本日の予定です」</div>
+      </div>
+      <div class="crew-card">
+        <div class="crew-icon">H</div>
+        <div class="name">ひかる</div>
+        <div class="role">SNS / News</div>
+        <div class="tone">「今日の注目ニュースです」</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 3: 導入するファイル一覧 -->
+<!-- ========================================== -->
+<section id="sec3">
+  <div class="container">
+    <h2><span class="section-num">3</span>導入するファイル一覧</h2>
+    <p class="section-lead">Claude Code に設定するファイルの全体像です。それぞれのファイルが何をするのか、なぜ必要なのかをご説明します。</p>
+
+    <p>
+      Claude Code は、特定のフォルダにテキストファイルを置くことで動作をカスタマイズできます。プログラミングの知識は不要です。テキストファイルに「こういう風に振る舞ってほしい」と日本語で書いておくだけで、AIがその指示に従います。
+    </p>
+
+    <table class="file-table">
+      <thead>
+        <tr>
+          <th style="width: 22%;">ファイル名</th>
+          <th style="width: 28%;">保存場所</th>
+          <th>役割・説明</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><code>CLAUDE.md</code></td>
+          <td><code>~/.claude/CLAUDE.md</code></td>
+          <td>
+            <strong>メイン設定ファイル（最も重要）</strong><br>
+            Claude Codeの「性格」と「ルール」を定義するファイルです。上原さんの情報（名前・会社・業務内容）、安全ルール（削除禁止・確認必須など）、使用するサービスの一覧、キャラクターの概要がすべてここに書かれています。Claude Codeを起動するたびに、まずこのファイルを読み込んでから対話を開始します。
+          </td>
+        </tr>
+        <tr>
+          <td><code>characters.md</code></td>
+          <td><code>~/.claude/characters.md</code></td>
+          <td>
+            <strong>全キャラクターの詳細定義</strong><br>
+            6人のキャラクター全員の口調、できること、使うツール、制約事項がまとめて定義されています。CLAUDE.mdから参照されており、キャラクターの振る舞いを一括管理できます。
+          </td>
+        </tr>
+        <tr>
+          <td><code>まどか.md</code></td>
+          <td><code>~/.claude/agents/</code></td>
+          <td>
+            <strong>まどか個別の詳細設定</strong><br>
+            まどか（総合窓口）が受け持つ業務の詳細ルール、他キャラへの引き継ぎ基準、対応のトーンなどが定義されています。
+          </td>
+        </tr>
+        <tr>
+          <td><code>恭介.md</code></td>
+          <td><code>~/.claude/agents/</code></td>
+          <td>
+            <strong>恭介個別の詳細設定</strong><br>
+            リサーチの手順、情報源の優先順位、レポートのフォーマット、調査時の注意点などが定義されています。
+          </td>
+        </tr>
+        <tr>
+          <td><code>まなみ.md</code></td>
+          <td><code>~/.claude/agents/</code></td>
+          <td>
+            <strong>まなみ個別の詳細設定</strong><br>
+            データ分析の手法、スプレッドシートの操作ルール、グラフのスタイル設定、数値の取り扱い注意点が定義されています。
+          </td>
+        </tr>
+        <tr>
+          <td><code>くるみ.md</code></td>
+          <td><code>~/.claude/agents/</code></td>
+          <td>
+            <strong>くるみ個別の詳細設定</strong><br>
+            文書作成のテンプレート、投資メモの構成ルール、LP向けレポートのフォーマット、文体のガイドラインが定義されています。
+          </td>
+        </tr>
+        <tr>
+          <td><code>マスター.md</code></td>
+          <td><code>~/.claude/agents/</code></td>
+          <td>
+            <strong>マスター個別の詳細設定</strong><br>
+            Gmail・カレンダーの操作ルール、メール下書きのフォーマット、スケジュール調整時の確認フロー、リマインドのタイミングが定義されています。
+          </td>
+        </tr>
+        <tr>
+          <td><code>ひかる.md</code></td>
+          <td><code>~/.claude/agents/</code></td>
+          <td>
+            <strong>ひかる個別の詳細設定</strong><br>
+            ニュース収集の情報源、X投稿のトーン・文字数ルール、煽り表現禁止ルール、ニュースレターのフォーマットが定義されています。
+          </td>
+        </tr>
+        <tr>
+          <td><code>morning-check/</code></td>
+          <td><code>~/.claude/skills/</code></td>
+          <td>
+            <strong>朝チェックスキル</strong><br>
+            「おはよう」と話しかけるだけで毎朝の定型チェック（予定確認・メール確認・ニュース収集・マーケット概況）を自動実行するための設定ファイル一式です。
+          </td>
+        </tr>
+        <tr>
+          <td><code>dashboard.html</code></td>
+          <td>ブラウザで開く</td>
+          <td>
+            <strong>Coalis Daily Brief ダッシュボード</strong><br>
+            朝チェックの結果を視覚的に表示するHTMLページです。ブラウザで開くと、本日の予定・メール・ニュース・マーケット情報が一覧で見られます。
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="alert alert-info">
+      <strong>導入時の作業について:</strong> これらのファイルはすべて、初回セットアップ時にこちらで配置・設定いたします。上原さんがファイルを編集する必要はありません。ただし、後から「口調を変えたい」「新しいキャラを追加したい」といったカスタマイズは随時対応可能です。
+    </div>
+
+    <h3>ファイル構成のイメージ</h3>
+    <div class="output-preview">
+      <pre style="font-size: 13px; line-height: 1.7; margin: 0; white-space: pre-wrap;">~/.claude/
+  CLAUDE.md              ... メイン設定（全体ルール・基本情報）
+  characters.md          ... キャラクター定義（6人分）
+  agents/
+    まどか.md            ... まどか個別設定
+    恭介.md              ... 恭介個別設定
+    まなみ.md            ... まなみ個別設定
+    くるみ.md            ... くるみ個別設定
+    マスター.md          ... マスター個別設定
+    ひかる.md            ... ひかる個別設定
+  skills/
+    morning-check/       ... 朝チェックスキル
+      SKILL.md           ... スキル定義
+
+coalis-dashboard/
+  dashboard.html         ... デイリーブリーフ画面</pre>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 4: 具体的な活用シーン -->
+<!-- ========================================== -->
+<section id="sec4" class="alt">
+  <div class="container">
+    <h2><span class="section-num">4</span>具体的な活用シーン</h2>
+    <p class="section-lead">実際の業務でどのように使えるのか、8つのシーンを具体的にご紹介します。それぞれ、操作イメージ（会話例）と結果イメージを掲載しています。</p>
+
+    <!-- シーン1: 朝チェック -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 01</div>
+      <h4 class="mt-0">朝チェック（毎朝の情報収集）</h4>
+      <p>
+        毎朝、「おはよう」と話しかけるだけで、その日に必要な情報がすべて一括でまとまります。これまでGmail、Googleカレンダー、日経、NewsPicks、Slack......とそれぞれ開いて確認していた作業が、1回の操作で完了します。
+      </p>
+
+      <p><strong>自動で収集される情報:</strong></p>
+      <ul>
+        <li>今日のスケジュール（Googleカレンダーから取得）</li>
+        <li>未読の重要メール（Gmailから取得、重要度順に整理）</li>
+        <li>PE・M&A関連ニュース（日経・NewsPicks・Xから収集）</li>
+        <li>マーケット概況（日経平均・TOPIX・S&P500・ドル円・米10年債利回り）</li>
+        <li>ポートフォリオ企業関連ニュース（投資先に関する報道を自動検知）</li>
+      </ul>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">おはよう</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">まどか</span>
+          <div class="chat-bubble">おはようございます。本日のブリーフィングをお届けします。</div>
+        </div>
+      </div>
+
+      <p><strong>出力イメージ:</strong></p>
+      <div class="output-preview">
+        <h5>本日の予定（4月7日 月曜日）</h5>
+        <ul>
+          <li>10:00-11:00 投資委員会（Zoom / 資料: Gドライブ「2026Q1レビュー」）</li>
+          <li>13:30-14:30 〇〇社CFO面談（丸の内オフィス）</li>
+          <li>16:00-17:00 チームMTG（Slack ハドル）</li>
+        </ul>
+
+        <h5>未読メール（重要度順）</h5>
+        <ul>
+          <li><strong>[重要]</strong> 〇〇ファンドLP様 -- 四半期レポート確認依頼（昨日18:30）</li>
+          <li><strong>[重要]</strong> 〇〇法律事務所 -- NDA修正版の返送（昨日17:15）</li>
+          <li><strong>[通常]</strong> 〇〇銀行 -- FA案件進捗共有（本日8:00）</li>
+          <li><strong>[通常]</strong> ニュースレター -- PEI Weekly Japan（本日7:00）</li>
+          <li>他4件</li>
+        </ul>
+
+        <h5>PE・M&Aニュース</h5>
+        <ul>
+          <li>〇〇ファンド、物流テック企業を約300億円で買収 -- 物流DX領域への投資加速</li>
+          <li>経産省、M&A促進税制の拡充を発表 -- スタートアップ買収を後押し</li>
+          <li>グローバルPEファンドの日本向け資金調達が過去最高ペース</li>
+        </ul>
+
+        <h5>マーケット概況</h5>
+        <div class="market-row"><span>日経平均</span><span class="up">40,285円 (+0.82%)</span></div>
+        <div class="market-row"><span>TOPIX</span><span class="up">2,815pt (+0.65%)</span></div>
+        <div class="market-row"><span>S&P 500（前日終値）</span><span class="down">5,432pt (-0.23%)</span></div>
+        <div class="market-row"><span>ドル円</span><span class="neutral">153.45円</span></div>
+        <div class="market-row"><span>米10年債利回り</span><span class="neutral">4.28%</span></div>
+      </div>
+
+      <div class="alert alert-success">
+        <strong>効果:</strong> 毎朝30分以上かかっていた情報収集が、「おはよう」の一言で完了します。浮いた時間を、本来の業務判断に充てられます。
+      </div>
+    </div>
+
+    <!-- シーン2: メール管理 -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 02</div>
+      <h4 class="mt-0">メール管理</h4>
+      <p>
+        Gmailを開かずに、メールの確認・検索・返信ドラフト作成がすべてClaude Codeから行えます。特に、大量のメールから特定の案件に関するものだけを抽出したり、返信の文面を自動生成する機能は、日々の業務時間を大幅に短縮します。
+      </p>
+
+      <p><strong>できること:</strong></p>
+      <ul>
+        <li>未読メールの一覧表示（件名・送信者・概要・重要度を自動判定）</li>
+        <li>特定キーワードでのメール検索（「〇〇案件に関するメールだけ見せて」）</li>
+        <li>返信ドラフトの自動生成（文脈を理解した上で適切な文面を作成）</li>
+        <li>Gmailの下書きフォルダに直接保存（あとは送信ボタンを押すだけ）</li>
+        <li>添付ファイルの確認（「この添付ファイルの中身を要約して」）</li>
+      </ul>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">今週のメールで〇〇案件に関するものだけ抽出して</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">マスター</span>
+          <div class="chat-bubble">
+            今週の〇〇案件関連メールを検索しました。5件見つかりました：<br><br>
+            1. 4/7（月）〇〇法律事務所 -- NDA修正版の件<br>
+            2. 4/5（土）〇〇社CFO -- 面談日程の確認<br>
+            3. 4/4（金）社内 田中 -- DD進捗報告<br>
+            4. 4/3（木）〇〇銀行 -- バリュエーション資料の共有<br>
+            5. 4/2（水）〇〇社 -- 追加資料リクエスト<br><br>
+            それぞれの詳細を見ますか？または返信が必要なものだけ教えましょうか？
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">NDAの件、返信ドラフト作って。修正内容確認の上、今週中に返送すると伝えて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">マスター</span>
+          <div class="chat-bubble">
+            ドラフトを作成しました。<br><br>
+            件名: Re: NDA修正版の件<br><br>
+            〇〇法律事務所<br>
+            〇〇先生<br><br>
+            いつもお世話になっております。<br>
+            NDA修正版をお送りいただき、ありがとうございます。<br>
+            内容を確認の上、今週中（4/11金曜日まで）に返送させていただきます。<br>
+            引き続きよろしくお願いいたします。<br><br>
+            --- <br>
+            Gmailの下書きに保存しました。内容をご確認の上、送信してください。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シーン3: 会議の議事録自動整理 -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 03</div>
+      <h4 class="mt-0">会議の議事録自動整理</h4>
+      <p>
+        Notta等の文字起こしツールで取得した会議の記録を、Claude Codeに渡すだけで、構造化された議事録に自動変換します。ダラダラとした会話の記録から、要点・決定事項・TODOを瞬時に抽出できます。
+      </p>
+
+      <p><strong>具体的な出力内容:</strong></p>
+      <ul>
+        <li>会議の要約（3行程度のサマリー）</li>
+        <li>決定事項のリスト（何が決まったかを明確に）</li>
+        <li>TODO（担当者・期限付きで整理）</li>
+        <li>次回アジェンダ案（今回の議論を踏まえた提案）</li>
+        <li>議論のポイント（特に重要な議論内容のメモ）</li>
+      </ul>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">くるみ、今日の投資委員会の文字起こし送るから、議事録にまとめて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">くるみ</span>
+          <div class="chat-bubble">
+            承知しました。文字起こしデータをお送りください。要約、決定事項、TODO、次回アジェンダの形式でまとめます。
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">（文字起こしデータを貼り付け）</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">くるみ</span>
+          <div class="chat-bubble">まとめました。以下が議事録です。</div>
+        </div>
+      </div>
+
+      <p><strong>出力イメージ:</strong></p>
+      <div class="output-preview">
+        <h5>投資委員会 議事録（2026/4/7）</h5>
+        <p style="margin-bottom: 12px;"><strong>参加者:</strong> 上原、田中、佐藤、山本</p>
+
+        <h5>要約（3行）</h5>
+        <ul>
+          <li>〇〇社案件について、DD第2フェーズの進捗を共有。財務DDは順調に進行中</li>
+          <li>新規案件（YY社）のソーシング状況を報告。来週中に初回面談を設定予定</li>
+          <li>ポートフォリオ企業A社のバリューアップ施策について、追加投資の是非を議論</li>
+        </ul>
+
+        <h5>決定事項</h5>
+        <ul>
+          <li>〇〇社DD: 法務DDの外部委託先を〇〇法律事務所に決定</li>
+          <li>A社: 追加投資（5億円）の方針を承認。詳細条件は次回確定</li>
+          <li>YY社: ソーシング段階から検討ステージに格上げ</li>
+        </ul>
+
+        <h5>TODO</h5>
+        <ul>
+          <li>田中 -- 〇〇法律事務所にDD依頼書を送付（期限: 4/9）</li>
+          <li>佐藤 -- A社追加投資の条件シートを作成（期限: 4/14）</li>
+          <li>上原 -- YY社代表との初回面談を来週中に設定（期限: 4/11）</li>
+          <li>山本 -- Q1ポートフォリオレポートの最終版を完成（期限: 4/18）</li>
+        </ul>
+
+        <h5>次回アジェンダ案（4/14）</h5>
+        <ul>
+          <li>〇〇社: 法務DDの初期所見共有</li>
+          <li>A社: 追加投資の条件確定</li>
+          <li>YY社: 初回面談の報告</li>
+          <li>Q1ポートフォリオレポート最終確認</li>
+        </ul>
+      </div>
+
+      <div class="alert alert-success">
+        <strong>効果:</strong> 会議後の議事録作成に1時間以上かかっていたものが、数分で完了します。参加者全員が同じ認識を持ち、次のアクションが明確になります。
+      </div>
+    </div>
+
+    <!-- シーン4: 市場リサーチ -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 04</div>
+      <h4 class="mt-0">市場リサーチ</h4>
+      <p>
+        特定の業界や企業について調査したいとき、恭介に依頼するだけで、複数の情報源から横断的にデータを収集し、構造化されたレポートにまとめます。M&A動向、市場規模、競合状況、ターゲット企業のDD用基本情報など、幅広いリサーチに対応します。
+      </p>
+
+      <p><strong>リサーチの種類:</strong></p>
+      <ul>
+        <li><strong>業界動向調査</strong> -- 特定業界のM&A件数、主要ディール、市場規模・成長率、バリュエーション水準</li>
+        <li><strong>企業基本情報</strong> -- 会社概要、沿革、経営陣、財務ハイライト、主要顧客、競合ポジション</li>
+        <li><strong>DD用資料</strong> -- 法的リスク、財務リスク、事業リスク、市場リスクのチェックリスト</li>
+        <li><strong>競合比較</strong> -- 同業他社との料率比較、サービス比較、市場シェア比較</li>
+      </ul>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">恭介、SaaS業界のM&A動向を調べて。直近1年の主要ディールと、バリュエーションのトレンドが知りたい</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">恭介</span>
+          <div class="chat-bubble">
+            調べてきました。SaaS業界のM&A動向、直近1年のまとめです。<br><br>
+            【市場概況】<br>
+            国内SaaS市場は2025年に約1.8兆円（前年比+18%）。M&A件数は前年比+25%と活発化。特にバーティカルSaaS（業界特化型）の案件が増加傾向。<br><br>
+            【主要ディール（直近1年）】<br>
+            1. A社によるB社買収 -- EV 200億円、EV/Revenue 12x<br>
+            2. C社による D社買収 -- EV 80億円、EV/ARR 15x<br>
+            3. 海外PE E社による F社のLBO -- EV 500億円<br>
+            ...(以下10件)<br><br>
+            【バリュエーショントレンド】<br>
+            - EV/Revenue: 中央値 8-12x（2024年: 6-10x から上昇）<br>
+            - EV/ARR: 中央値 12-18x<br>
+            - NRR 120%以上の企業はプレミアム評価<br><br>
+            面白い動きがあります。バーティカルSaaS、特に建設・医療・物流向けで高いバリュエーションがついています。詳細レポートにまとめましょうか？
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シーン5: データ分析・レポート -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 05</div>
+      <h4 class="mt-0">データ分析・レポート作成</h4>
+      <p>
+        Googleスプレッドシートに蓄積されたデータを、まなみが読み込んで分析し、グラフ付きのレポートを自動生成します。ファンドパフォーマンスの集計、ポートフォリオ企業のKPI分析、LP向け四半期レポートのドラフト作成まで、一気通貫で対応します。
+      </p>
+
+      <p><strong>対応する分析:</strong></p>
+      <ul>
+        <li>ファンドパフォーマンス分析 -- IRR、MOIC、DPI等の主要指標の推移</li>
+        <li>ポートフォリオKPIモニタリング -- 各社の売上・利益・成長率の追跡</li>
+        <li>バリュエーション計算 -- DCF、マルチプル法の計算補助</li>
+        <li>比較分析 -- 複数企業・複数案件の横比較表の自動生成</li>
+        <li>グラフ・チャート作成 -- 数値データを視覚化してHTMLレポートに埋め込み</li>
+      </ul>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">まなみ、Googleスプレッドシートの「ポートフォリオKPI」シートを読み込んで、前四半期のファンドパフォーマンスをまとめて</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">まなみ</span>
+          <div class="chat-bubble">
+            スプレッドシートを読み込みました。数字で見てみましょう。<br><br>
+            【ファンドI 2026年Q1パフォーマンス】<br>
+            - 運用資産総額: 150億円<br>
+            - Gross IRR: 22.4%（前期 21.8%）<br>
+            - Net IRR: 18.1%<br>
+            - Gross MOIC: 1.8x<br>
+            - DPI: 0.4x<br>
+            - TVPI: 1.8x<br><br>
+            ここがポイントです。Q1はA社のバリューアップが貢献し、Gross IRRが0.6pt改善しました。一方、C社のマージン低下がマイナス要因です。<br><br>
+            LP向けレポートのドラフトをくるみと共同で作成しましょうか？
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">お願い。グラフも入れて、PDF化できる形式で</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">まなみ</span>
+          <div class="chat-bubble">
+            承知しました。くるみと連携して、以下の構成でLP向けQ1レポートを作成します。<br><br>
+            1. エグゼクティブサマリー<br>
+            2. ファンドパフォーマンス（IRR・MOIC推移グラフ付き）<br>
+            3. ポートフォリオ概要（個社別KPIサマリー）<br>
+            4. 主要イベント・バリューアップ活動<br>
+            5. 市場環境コメント<br>
+            6. 今後の見通し<br><br>
+            HTML形式で出力します。ブラウザの印刷機能でPDF変換可能です。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シーン6: 営業・提案資料 -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 06</div>
+      <h4 class="mt-0">営業・提案資料の作成</h4>
+      <p>
+        新規案件の営業や提案に必要な資料を、くるみが自動生成します。ターゲット企業に合わせた提案書の作成、競合FAとの料率比較表の作成など、営業活動を効率化します。
+      </p>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">くるみ、〇〇社向けのFA提案書を作って。事業承継型M&Aのアドバイザリー提案で</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">くるみ</span>
+          <div class="chat-bubble">
+            この構成でいかがでしょう：<br><br>
+            1. ごあいさつ<br>
+            2. Coalisのご紹介（実績・強み）<br>
+            3. 〇〇社を取り巻く市場環境<br>
+            4. 事業承継の選択肢と各メリット・デメリット<br>
+            5. M&Aプロセスの全体像<br>
+            6. 当社のアドバイザリーサービス内容<br>
+            7. 報酬体系<br>
+            8. スケジュール案<br>
+            9. 参考事例<br><br>
+            〇〇社の業種・規模に合わせてカスタマイズします。業種と年商規模を教えていただけますか？
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">製造業、年商30億円、オーナー経営で後継者不在</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">くるみ</span>
+          <div class="chat-bubble">
+            まとめました。製造業・年商30億円・オーナー経営・後継者不在の状況に合わせた提案書を作成しました。<br><br>
+            恭介にも依頼して、同業界の最近のM&A事例（成功例）を3件ほど盛り込みました。HTML形式で出力しましたので、ブラウザでご確認ください。<br><br>
+            修正点があればお知らせください。
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シーン7: SNS・情報発信 -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 07</div>
+      <h4 class="mt-0">SNS・情報発信</h4>
+      <p>
+        X（旧Twitter）への投稿案やニュースレターの原稿を、ひかるが自動生成します。PE/M&A業界の専門性を活かしつつ、読みやすいトーンで情報発信をサポートします。煽り表現や否定表現は使わず、事実に基づいた誠実な発信を心がけます。
+      </p>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">ひかる、今週のM&Aニュースダイジェストをまとめて。ニュースレター形式で</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">ひかる</span>
+          <div class="chat-bubble">
+            今週の注目ニュースをまとめました。<br><br>
+            --- Coalis Weekly M&A Digest（4/1 - 4/7）---<br><br>
+            【今週のヘッドライン】<br>
+            1. 国内PEファンドの資金調達が2年ぶり高水準 -- LP需要の回復を確認<br>
+            2. 製造業M&A、3月は過去5年で最多の月間件数<br>
+            3. クロスボーダーM&A、円安を背景にインバウンド案件が増加<br><br>
+            【注目ディール】<br>
+            - 〇〇案件（詳細）<br>
+            - △△案件（詳細）<br><br>
+            【編集後記】<br>
+            PE市場は引き続き活況です。特に事業承継ニーズの高まりが......<br><br>
+            メール配信用のHTML版も作成しましょうか？
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- シーン8: スケジュール管理 -->
+    <div class="scene-block">
+      <div class="scene-label">Scene 08</div>
+      <h4 class="mt-0">スケジュール管理</h4>
+      <p>
+        Googleカレンダーとの連携により、予定の確認・作成・変更がすべて会話形式で行えます。空き時間の検索、会議の日程調整、リマインダーの設定まで、マスターがカバーします。
+      </p>
+
+      <p><strong>操作イメージ:</strong></p>
+      <div class="chat-window">
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">マスター、来週の予定を一覧にして。空き時間もわかるようにして</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">マスター</span>
+          <div class="chat-bubble">
+            来週（4/14-18）のスケジュールです。<br><br>
+            【月曜 4/14】<br>
+            10:00-11:00 投資委員会<br>
+            14:00-15:00 〇〇社面談<br>
+            空き: 11:00-14:00 / 15:00-18:00<br><br>
+            【火曜 4/15】<br>
+            終日空き<br><br>
+            【水曜 4/16】<br>
+            9:30-10:30 社内MTG<br>
+            13:00-15:00 DD訪問（〇〇社本社）<br>
+            空き: 10:30-13:00 / 15:00-18:00<br><br>
+            【木曜 4/17】<br>
+            10:00-12:00 LP面談<br>
+            16:00-17:00 弁護士MTG<br>
+            空き: 13:00-16:00<br><br>
+            【金曜 4/18】<br>
+            9:00-10:00 チーム朝会<br>
+            空き: 10:00-18:00<br><br>
+            新しい予定を入れたい場合は、日時とタイトルをお知らせください。
+          </div>
+        </div>
+        <div class="chat-row user">
+          <span class="chat-label">上原さん</span>
+          <div class="chat-bubble">火曜の午前に△△社の初回面談を入れて。Zoomで。先方は田中さん</div>
+        </div>
+        <div class="chat-row ai">
+          <span class="chat-label">マスター</span>
+          <div class="chat-bubble">
+            以下の内容で登録します。<br><br>
+            日時: 4/15（火）10:00-11:00<br>
+            タイトル: △△社 初回面談<br>
+            場所: Zoom<br>
+            参加者: 上原さん、田中さん（△△社）<br><br>
+            登録してよろしいですか？先方への日程確認メールの下書きも作りましょうか？
+          </div>
+        </div>
+        <div class="chat-note">カレンダー登録も、日程確認メール作成も、すべて1つの画面で完結</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 5: ダッシュボード -->
+<!-- ========================================== -->
+<section id="sec5">
+  <div class="container">
+    <h2><span class="section-num">5</span>Coalis Daily Brief ダッシュボード</h2>
+    <p class="section-lead">毎日の情報を一画面にまとめた専用ダッシュボードをご提供します。</p>
+
+    <p>
+      朝チェックの結果を視覚的に表示する専用のHTMLページです。ブラウザで開くだけで、その日に必要な情報が一覧で確認できます。Claude Code での対話結果をダッシュボードに反映し、いつでもブラウザから参照可能です。
+    </p>
+
+    <h3>ダッシュボードイメージ</h3>
+    <div class="dashboard-preview">
+      <h4>Coalis Daily Brief -- 2026/4/7 Mon</h4>
+      <div class="dash-grid">
+        <div class="dash-card">
+          <div class="dash-label">Today's Schedule</div>
+          <div class="dash-value">
+            10:00 投資委員会（Zoom）<br>
+            13:30 〇〇社CFO面談<br>
+            16:00 チームMTG
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-label">Priority Mail</div>
+          <div class="dash-value">
+            LP様 -- Q1レポート確認依頼<br>
+            〇〇法律事務所 -- NDA返送<br>
+            〇〇銀行 -- FA案件進捗
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-label">Market</div>
+          <div class="dash-value">
+            日経 40,285 (+0.82%)<br>
+            TOPIX 2,815 (+0.65%)<br>
+            USD/JPY 153.45<br>
+            S&P 5,432 (-0.23%)
+          </div>
+        </div>
+        <div class="dash-card">
+          <div class="dash-label">PE/M&A News</div>
+          <div class="dash-value">
+            物流テック企業 300億円買収<br>
+            M&A促進税制の拡充<br>
+            海外PE、日本投資が最高ペース
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <h3>5つのセクション</h3>
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="card">
+        <h4>1. 本日のスケジュール</h4>
+        <p>Googleカレンダーから取得した当日の予定一覧。会議の場所・参加者・関連資料へのリンクも表示します。</p>
+      </div>
+      <div class="card">
+        <h4>2. 重要メール</h4>
+        <p>Gmailの未読メールから、重要度の高いものをピックアップ。件名・送信者・概要を一覧表示します。</p>
+      </div>
+      <div class="card">
+        <h4>3. マーケット概況</h4>
+        <p>日経平均、TOPIX、S&P500、ドル円、米10年債利回り等の主要指標を表示。前日比の変動もわかります。</p>
+      </div>
+      <div class="card">
+        <h4>4. PE・M&Aニュース</h4>
+        <p>日経、NewsPicks、X等から収集した業界関連ニュースのハイライト。リンク付きで詳細も確認できます。</p>
+      </div>
+      <div class="card">
+        <h4>5. タスク・TODO</h4>
+        <p>当日期限のタスク、進行中の案件のステータス、次のアクション等を一覧で管理します。</p>
+      </div>
+    </div>
+
+    <h3 style="margin-top: 32px;">今後のカスタマイズ予定</h3>
+    <ul>
+      <li>ポートフォリオ企業のニュース自動モニタリング機能の追加</li>
+      <li>案件パイプラインのステージ管理画面の統合</li>
+      <li>週次・月次レポートの自動生成リンクの追加</li>
+      <li>チームメンバーのタスク状況の統合表示</li>
+      <li>上原さんの使い方に合わせたレイアウトの最適化</li>
+    </ul>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 6: セキュリティ・安全性 -->
+<!-- ========================================== -->
+<section id="sec6" class="alt">
+  <div class="container">
+    <h2><span class="section-num">6</span>セキュリティ・安全性</h2>
+    <p class="section-lead">PE/FA業務では、クライアント情報の守秘義務が極めて重要です。AI Crew は、安全性を最優先に設計されています。</p>
+
+    <h3>最終判断は必ず人間が行う</h3>
+    <p>
+      AI Crew は、情報収集・分析・ドラフト作成を担当します。しかし、<strong>投資判断、クライアント対応、契約に関する最終判断は、必ず上原さんご自身が行う</strong>設計になっています。AIが勝手に意思決定することはありません。
+    </p>
+    <p>
+      たとえば、メールの返信ドラフトを作成しても、実際に送信するかどうかは上原さんの判断です。カレンダーに予定を登録する際も、「登録してよろしいですか？」と必ず確認を取ります。ファイルの編集・削除も、事前確認なしには実行しません。
+    </p>
+
+    <h3>クライアント情報の守秘義務</h3>
+    <p>
+      Claude Code は、お手元のパソコン上で動作します。データは上原さんのパソコンから直接各サービス（Gmail、Google Calendar等）にアクセスする形で処理され、第三者のサーバーに転送されることはありません。
+    </p>
+    <ul>
+      <li>クライアント名や案件情報が外部に漏れることはありません</li>
+      <li>Claude との対話内容は、Anthropic社のサーバーで処理されますが、学習データとしては使用されません（Anthropic社の利用規約に基づく）</li>
+      <li>Google Workspace のデータは、Google の認証基盤を通じて安全にアクセスされます</li>
+    </ul>
+
+    <h3>秘密情報（APIキー等）の保護</h3>
+    <p>
+      各サービスへの接続に使う認証情報（APIキー）は、すべてお手元のパソコン内に保存されます。具体的には：
+    </p>
+    <ul>
+      <li>APIキーは <code>.env</code> ファイルとしてローカルに保存</li>
+      <li><code>.env</code> ファイルは Git（バージョン管理）にアップロードされないよう二重の安全策を設定</li>
+      <li>万が一、秘密情報が外部に送信されそうになった場合は、自動でブロックする仕組みを導入</li>
+    </ul>
+
+    <h3>ファイル操作の確認フロー</h3>
+    <p>
+      AI Crew には、以下の安全ルールが組み込まれています：
+    </p>
+
+    <div class="grid-2" style="margin-top: 16px;">
+      <div class="card">
+        <h4>上書き前の確認</h4>
+        <p>既存ファイルを編集する前に、必ず「上書きしますが、よろしいですか？」と確認します。確認なしに内容を変更することはありません。</p>
+      </div>
+      <div class="card">
+        <h4>削除の原則禁止</h4>
+        <p>ファイルの削除コマンドは原則として実行しません。どうしても必要な場合は、対象と理由を明示して承認を得ます。強制削除は一切行いません。</p>
+      </div>
+      <div class="card">
+        <h4>日本語での確認</h4>
+        <p>すべての確認メッセージは日本語で行います。英語の技術用語が必要な場合は、必ず日本語の補足をつけます。</p>
+      </div>
+      <div class="card">
+        <h4>コマンド実行前の説明</h4>
+        <p>技術的なコマンドを実行する際は、「何をするか」「どうなるか」を平易な言葉で説明してから実行します。</p>
+      </div>
+    </div>
+
+    <div class="alert alert-warning" style="margin-top: 24px;">
+      <strong>重要:</strong> PE/FA業務における数値の正確性は極めて重要です。AI Crew は、推測で数値を出すことはしません。データソースが不明確な場合は、その旨を明示し、確認を求めます。
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 7: 導入の流れ -->
+<!-- ========================================== -->
+<section id="sec7">
+  <div class="container">
+    <h2><span class="section-num">7</span>導入の流れ</h2>
+    <p class="section-lead">セットアップは合計で約1時間半。難しい作業はすべてこちらで行いますので、上原さんはPCの前で見守っていただくだけで大丈夫です。</p>
+
+    <ol class="step-list">
+      <li>
+        <strong>Claude Code のインストール</strong><span class="time">約10分</span>
+        <p class="text-sm text-muted mb-0">
+          お手元のMacに Claude Code をインストールします。ターミナル（Macに標準搭載されているアプリ）を開いて、1行のコマンドを入力するだけです。こちらで操作しますので、上原さんは見守っていただくだけで結構です。Anthropic社のアカウント作成もこのステップで行います。
+        </p>
+      </li>
+      <li>
+        <strong>MCP接続設定（Gmail、Calendar、Sheets等）</strong><span class="time">約30分</span>
+        <p class="text-sm text-muted mb-0">
+          Gmail、Googleカレンダー、Googleスプレッドシート、Googleドライブ、Slackなど、普段お使いのサービスへの接続を設定します。Google アカウントでの認証（「このアプリにアクセスを許可しますか？」の画面で「許可」を押す操作）が数回必要になります。それ以外はこちらで設定します。
+        </p>
+      </li>
+      <li>
+        <strong>設定ファイルの配置（CLAUDE.md・キャラ設定等）</strong><span class="time">約10分</span>
+        <p class="text-sm text-muted mb-0">
+          CLAUDE.md、characters.md、各キャラクターの個別設定ファイル、朝チェックスキル、ダッシュボード等のファイルを所定のフォルダに配置します。すべてこちらで行います。
+        </p>
+      </li>
+      <li>
+        <strong>動作確認・チュートリアル</strong><span class="time">約30分</span>
+        <p class="text-sm text-muted mb-0">
+          実際にClaude Code を起動して、基本的な操作を一緒に試します。「おはよう」と入力して朝チェックが動くか、各キャラクターの呼び出し、メール確認、カレンダー参照などを一通り確認します。上原さんに操作に慣れていただく時間です。
+        </p>
+      </li>
+      <li>
+        <strong>1週間の試用期間 → フィードバック → カスタマイズ</strong><span class="time">1週間</span>
+        <p class="text-sm text-muted mb-0">
+          セットアップ後、1週間ほど実際の業務で使っていただきます。その間、「ここが使いにくい」「こんな機能がほしい」「キャラの口調を変えたい」などのフィードバックをいただき、カスタマイズを行います。Slackやメールでいつでもご連絡ください。
+        </p>
+      </li>
+    </ol>
+
+    <div class="alert alert-success" style="margin-top: 24px;">
+      <strong>安心ポイント:</strong> 技術的な作業はすべてこちらで行います。上原さんに必要なのは、Googleアカウントの認証（「許可」を押す操作）のみです。セットアップ中に不明点があれば、その場で丁寧にご説明します。
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 8: 料金・サポート体制 -->
+<!-- ========================================== -->
+<section id="sec8" class="alt">
+  <div class="container">
+    <h2><span class="section-num">8</span>料金・サポート体制</h2>
+    <p class="section-lead">初回セットアップからアフターサポートまで、しっかりサポートいたします。</p>
+
+    <table class="data-table">
+      <thead>
+        <tr>
+          <th style="width: 30%;">項目</th>
+          <th style="width: 30%;">内容</th>
+          <th>備考</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td><strong>初回セットアップ</strong></td>
+          <td>含まれています</td>
+          <td>今回のMTGで実施。Claude Codeインストール、MCP接続、設定ファイル配置、動作確認まですべて対応します。</td>
+        </tr>
+        <tr>
+          <td><strong>月額サポート</strong></td>
+          <td>応相談</td>
+          <td>キャラクターのカスタマイズ、新しいスキルの追加、トラブル対応等。ご利用状況に応じてプランをご提案します。</td>
+        </tr>
+        <tr>
+          <td><strong>カスタマイズ・追加開発</strong></td>
+          <td>随時対応</td>
+          <td>「新しいキャラクターを追加したい」「〇〇サービスとも連携したい」等のご要望に対応します。</td>
+        </tr>
+        <tr>
+          <td><strong>緊急サポート</strong></td>
+          <td>メール・電話で対応</td>
+          <td>「動かなくなった」「設定がおかしい」等の緊急時は、メールまたは電話で迅速に対応します。</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Claude Code の利用料金について</h3>
+    <p>
+      Claude Code の利用には、Anthropic社への月額利用料が別途発生します。2026年4月現在のプランは以下の通りです：
+    </p>
+    <ul>
+      <li><strong>Claude Max（月額 $100 / 約15,000円）</strong> -- 通常利用に十分な利用枠。まずはこちらで開始することをお勧めします</li>
+      <li><strong>Claude Max（月額 $200 / 約30,000円）</strong> -- 大量利用向け。ヘビーに使う場合はこちら</li>
+    </ul>
+    <p>
+      ※ 料金は為替レートにより変動します。最新情報はAnthropicの公式サイトでご確認ください。
+    </p>
+
+    <h3>ご連絡先</h3>
+    <div class="card" style="margin-top: 16px;">
+      <h4 class="mt-0">合同会社青橋 / Blue AI Crew</h4>
+      <p class="mb-0">
+        担当: 斉藤信介（さいとう しんすけ）<br>
+        メール: saito@bluebridge.me<br>
+        電話: 080-9454-5206<br>
+        Slack / LINE でも対応可能です。
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- Section 9: FAQ -->
+<!-- ========================================== -->
+<section id="sec9">
+  <div class="container">
+    <h2><span class="section-num">9</span>FAQ（よくあるご質問）</h2>
+    <p class="section-lead">お客様からよくいただくご質問をまとめました。</p>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. AIが間違った情報を出したらどうなりますか？</div>
+      <div class="faq-a">
+        AIは膨大な情報をもとに回答を生成しますが、誤りを含む可能性はゼロではありません。そのため、AI Crew では<strong>最終確認は必ず人間（上原さん）が行う設計</strong>にしています。特に数値データや企業情報については、AIが情報源を明示するようルール化しており、確認がしやすくなっています。また、「推測で数値を出さない」というルールも組み込まれているため、不確かな情報には「データが見つかりませんでした」と正直に報告します。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. データは安全ですか？外部に漏れませんか？</div>
+      <div class="faq-a">
+        各サービスへの接続に使うAPIキー（認証情報）は、すべて上原さんのパソコン内にのみ保存されます。クラウド上のサーバーに送信されることはありません。Claude との対話内容はAnthropicのサーバーで処理されますが、Anthropic社の利用規約により、お客様の入力データがAIの学習に使用されることはありません。また、Google Workspace のデータは、Google の認証基盤（OAuth）を通じてアクセスするため、Google のセキュリティ基準に準拠しています。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. チームメンバーも使えますか？</div>
+      <div class="faq-a">
+        基本的には1人1セットアップが前提です。各メンバーのClaude Codeに、それぞれのGmailやカレンダーを接続する形になります。ただし、チーム全体で共有するキャラクター設定（世界観やルール）は統一できますので、「チーム全員が同じAI Crewを使っている」という体験を実現できます。チームへの展開をご検討の場合は、別途プランをご提案いたします。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. ChatGPT との違いは何ですか？</div>
+      <div class="faq-a">
+        最大の違いは<strong>MCP（Model Context Protocol）によるサービス接続</strong>です。ChatGPTは基本的に「対話するだけ」ですが、Claude Code は Gmail、カレンダー、スプレッドシート、Slack等に実際に接続して操作できます。つまり、「調べて」と頼むだけでなく、「メールの下書きを作ってGmailに保存して」「カレンダーに予定を入れて」「スプレッドシートのデータを集計して」といった<strong>実際の業務操作</strong>までできる点が決定的な違いです。また、CLAUDE.mdによるカスタマイズで、上原さん専用の業務パートナーとして細かく設定できる点もChatGPTにはない特徴です。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. プログラミングの知識は必要ですか？</div>
+      <div class="faq-a">
+        いいえ、一切必要ありません。Claude Code への指示はすべて日本語の自然な言葉で行います。「今日の予定教えて」「メールまとめて」「この業界調べて」のように、普通に話しかけるだけです。初回セットアップも、技術的な作業はすべてこちらで行います。使い方に不安がある場合は、セットアップ時のチュートリアルで丁寧にご説明いたします。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. 月額コストはどれくらいかかりますか？</div>
+      <div class="faq-a">
+        Claude Code の利用には、Anthropic社への月額利用料（月額 $100 〜 $200、約15,000円 〜 30,000円）が発生します。まずは月額 $100 のプランから始めることをお勧めします。通常の業務利用であれば十分な利用枠があります。これに加えて、弊社のサポート費用が別途ございますが、まずは1週間の試用期間で効果を実感していただいた上でご検討いただければと思います。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. 後からキャラクターを追加・変更できますか？</div>
+      <div class="faq-a">
+        はい、いつでも変更可能です。「口調を変えたい」「新しい役割のキャラクターを追加したい」「世界観を変えたい」といったカスタマイズは随時対応いたします。設定ファイル（テキストファイル）を編集するだけなので、対応もスピーディです。
+      </div>
+    </div>
+
+    <div class="faq-item">
+      <div class="faq-q">Q. インターネットに接続できない環境でも使えますか？</div>
+      <div class="faq-a">
+        Claude Code はインターネット接続が必要です。AIの処理自体がクラウド上で行われるため、オフライン環境では利用できません。ただし、一度生成されたレポートやダッシュボード（HTMLファイル）は、ローカルに保存されるため、オフラインでも閲覧可能です。
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================== -->
+<!-- フッター -->
+<!-- ========================================== -->
+<footer class="footer">
+  <p>
+    <strong>Coalis AI Crew 導入のご提案</strong><br>
+    合同会社青橋 / Blue AI Crew<br>
+    2026年4月 作成<br><br>
+    担当: 斉藤信介<br>
+    saito@bluebridge.me / 080-9454-5206
+  </p>
+</footer>
+
+</body>
+</html>
